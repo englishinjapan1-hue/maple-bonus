@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英語力爆上げ！趣味×英語の組み合わせリスト</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F7F4EC;
+    --cream-deep:#EFEADD;
+    --navy:#23314D;
+    --navy-soft:#3A4A6B;
+    --gold:#C79A4B;
+    --gold-deep:#A87F35;
+    --gold-pale:#F0E4C8;
+    --ink:#2B2B2B;
+    --muted:#6E6A60;
+    --line:rgba(35,49,77,.14);
+    --white:#FFFEFB;
+    --radius:18px;
+    --shadow:0 8px 30px rgba(35,49,77,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Zen Kaku Gothic New",sans-serif;
+    background:var(--cream);color:var(--ink);line-height:1.85;
+    -webkit-font-smoothing:antialiased;padding:0 18px 80px;
+  }
+  .wrap{max-width:660px;margin:0 auto}
+
+  /* hero */
+  .hero{padding:52px 0 10px;text-align:center}
+  .eyebrow{font-family:"Zen Maru Gothic",sans-serif;color:var(--gold-deep);
+    font-weight:500;font-size:.82rem;letter-spacing:.22em;margin-bottom:16px}
+  .hero h1{font-family:"Zen Maru Gothic",sans-serif;color:var(--navy);
+    font-weight:700;font-size:1.62rem;line-height:1.5}
+  .hero h1 .accent{color:var(--gold-deep)}
+  .hero .lead{margin-top:20px;color:var(--navy-soft);font-size:1rem;text-align:left}
+
+  /* intro note */
+  .keynote{
+    background:var(--navy);color:var(--cream);border-radius:var(--radius);
+    padding:26px 24px;margin-top:30px;box-shadow:var(--shadow);
+  }
+  .keynote .kh{
+    font-family:"Zen Maru Gothic",sans-serif;font-weight:700;
+    color:var(--gold-pale);font-size:1.02rem;margin-bottom:12px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .keynote p{font-size:.96rem;line-height:1.85;margin-bottom:12px}
+  .keynote p:last-child{margin-bottom:0}
+  .keynote .pin{font-weight:700;color:#fff}
+  .keynote ul{list-style:none;margin:6px 0 0;padding:0}
+  .keynote li{position:relative;padding-left:20px;margin-bottom:8px;font-size:.94rem}
+  .keynote li::before{content:"・";position:absolute;left:2px;color:var(--gold)}
+
+  /* group */
+  .group{margin-top:46px}
+  .group-head{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+  .group-head .ico{font-size:1.5rem}
+  .group-head h2{font-family:"Zen Maru Gothic",sans-serif;color:var(--navy);
+    font-weight:700;font-size:1.22rem}
+  .group-line{height:2px;background:var(--gold-pale);border-radius:2px;margin-bottom:18px}
+
+  /* accordion item */
+  .item{background:var(--white);border:1px solid var(--line);
+    border-radius:14px;margin-bottom:12px;overflow:hidden;box-shadow:var(--shadow)}
+  .item-btn{
+    width:100%;text-align:left;background:none;border:none;cursor:pointer;
+    padding:18px 20px;display:flex;align-items:center;gap:12px;
+    font-family:"Zen Maru Gothic",sans-serif;font-weight:500;font-size:1.08rem;
+    color:var(--navy);transition:background .15s ease;
+  }
+  .item-btn:hover{background:var(--cream)}
+  .item-btn .emo{font-size:1.4rem;flex-shrink:0}
+  .item-btn .nm{flex:1}
+  .item-btn .chev{color:var(--gold-deep);transition:transform .25s ease;font-size:1.1rem}
+  .item.open .chev{transform:rotate(180deg)}
+  .panel{max-height:0;overflow:hidden;transition:max-height .3s ease}
+  .item.open .panel{max-height:700px}
+  .panel-in{padding:4px 20px 22px}
+
+  .theme{
+    background:var(--gold-pale);border-radius:10px;padding:12px 14px;
+    color:var(--navy);font-size:.95rem;margin-bottom:16px;
+  }
+  .theme b{font-family:"Zen Maru Gothic",sans-serif;color:var(--gold-deep)}
+
+  .kw-label{font-family:"Zen Maru Gothic",sans-serif;color:var(--navy);
+    font-weight:500;font-size:.9rem;margin-bottom:10px}
+  .kw{margin-bottom:9px;padding-left:4px}
+  .kw .en{
+    display:inline-block;font-family:"Zen Kaku Gothic New",sans-serif;
+    font-weight:500;background:var(--cream-deep);color:var(--navy);
+    border-radius:6px;padding:3px 10px;font-size:.95rem;
+  }
+  .kw .step1 .en{border-left:3px solid var(--line)}
+  .kw .ja{display:block;color:var(--muted);font-size:.84rem;margin-top:3px;padding-left:4px}
+  .kw-arrow{color:var(--gold);font-weight:700;margin:0 2px}
+
+  .yamitsuki{
+    margin-top:16px;border-top:1px dashed var(--line);padding-top:14px;
+    font-size:.93rem;color:var(--navy-soft);
+  }
+  .yamitsuki b{font-family:"Zen Maru Gothic",sans-serif;color:var(--gold-deep)}
+
+  .footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:52px;line-height:1.7}
+
+  @media(max-width:430px){
+    .hero h1{font-size:1.4rem}
+    .item-btn{font-size:1rem}
+    .kw .en{font-size:.9rem}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">親子バイリンガル革命 ／ 特典</div>
+    <h1>英語力<span class="accent">爆上げ！</span><br>趣味 × 英語の<br>組み合わせリスト</h1>
+    <p class="lead">
+      英語は「勉強」しようとするから、続きません。<br>
+      でも、あなたの「好き」と英語をかけ合わせると、世界が一気に広がります。<br>
+      まずは“言いたいことを英語にする”のではなく、ネットの向こうに広がる<b>楽しい英語の世界を、探しに行きましょう。</b>
+    </p>
+  </div>
+
+  <div class="keynote">
+    <div class="kh">📌 はじめに ── 英語で検索するのがカギ</div>
+    <p>このリストのキーワードは、<span class="pin">すべて英語で打ってください。</span>ここがいちばん大事です。日本語で検索すると、日本語のサイトや英語教材の会社にたどり着いてしまい、本物の「英語の世界」には入れません。</p>
+    <p>ひとつ注意。最近の検索は「あなたは日本語の人」と判断して、英語で打っても日本語の結果を返すことがあります。これも、英語への“見えない参入障壁”。そんなときは——</p>
+    <ul>
+      <li>YouTube で探すと、英語キーワードに素直に反応してくれます（おすすめ）</li>
+      <li>出てきた英語の動画を1本タップすれば、関連動画もどんどん英語になっていきます</li>
+    </ul>
+    <p>一度この「英語の流れ」に乗れば、あとは向こうから、楽しい英語が流れてきます。</p>
+  </div>
+
+  <div id="list"></div>
+
+  <p class="footer">© メイプル英語スクール ／ 親子バイリンガル革命</p>
+</div>
+
+<script>
+  const groups = [
+    { ico:"🏠", title:"おうちで楽しむ", items:[
+      { emo:"🍳", name:"料理・お菓子づくり",
+        theme:"次の休日に作ってみたいレシピを探そう。「おいしそう、作りたい！」が入口です。",
+        kw:[["dinner recipe","夕食レシピ ── ここから始めて…"],["easy dinner recipe","「簡単な」を足すと、作りやすいものに"],["easy chicken dinner recipe","「鶏肉で」と絞れば、今夜の献立が決まる"]],
+        yami:"たった1語で、見える世界が変わる。気に入ったチャンネルを1つ登録すれば、毎日おいしそうな英語が流れてきます。" },
+      { emo:"🧶", name:"手芸・クラフト・ものづくり",
+        theme:"作ってみたい！と思える、海外のハンドメイド作品を探そう。",
+        kw:[["craft idea","手作りのアイデア ── ここから始めて…"],["easy craft idea for beginners","「初心者向けの簡単な」もの"],["easy felt craft for kids","「フェルトで、子ども向けに」まで絞れる"]],
+        yami:"「これなら作れそう」が見つかると、手が動き出す。手作業中は、英語を聞き流すのにぴったりです。" },
+      { emo:"🌷", name:"ガーデニング",
+        theme:"こんなお庭にしたい！と思える景色を探そう。",
+        kw:[["garden idea","庭のアイデア ── ここから始めて…"],["small garden idea","「小さな庭」に絞ると、現実的に"],["small balcony flower garden","「ベランダで、花を」まで絞れる"]],
+        yami:"理想の庭が見つかると、育て方も英語で知りたくなる。好奇心が、次の英語を連れてきます。" },
+      { emo:"💄", name:"美容・コスメ",
+        theme:"試してみたい！と思えるメイクやスキンケアを探そう。",
+        kw:[["makeup tutorial","メイク動画 ── ここから始めて…"],["natural makeup tutorial","「ナチュラルメイク」に絞ると、好みに近づく"],["natural makeup tutorial for beginners","「初心者向け」まで絞れる"]],
+        yami:"「真似したい人」を1人見つけると、その人の動画を追いかけるだけで、毎日が英語の時間に。" },
+      { emo:"📱", name:"SNS・インスタ",
+        theme:"見ているだけで楽しい！海外アカウントを探そう。",
+        kw:[["home decor","インテリア ── ここから始めて…"],["cozy home decor","「居心地のいい」に絞ると、癒し系に"],["cozy small apartment decor","「小さな部屋の」まで絞れる"]],
+        yami:"好きな世界観のアカウントをフォローすれば、英語の投稿が毎日、向こうから流れてきます。" }
+    ]},
+    { ico:"🎬", title:"カルチャーにひたる", items:[
+      { emo:"🎵", name:"音楽・歌",
+        theme:"口ずさみたくなる、海外の曲に出会おう。",
+        kw:[["pop song","ポップソング ── ここから始めて…"],["relaxing pop song","「リラックスできる」に絞ると、好みに"],["relaxing acoustic pop playlist","「アコースティックの」再生リストまで"]],
+        yami:"歌詞を見ながら聴くと、音と意味がつながる。好きな1曲が、何十回ぶんの英語になります。" },
+      { emo:"🎬", name:"映画・海外ドラマ",
+        theme:"今夜見たい！と思える作品を探そう。",
+        kw:[["feel good movie","見て元気が出る映画 ── ここから始めて…"],["feel good movie for women","「女性向け」に絞ると、刺さるものに"],["feel good romantic comedy movie","「ラブコメ」まで絞れる"]],
+        yami:"ハマる1作に出会えると、続きが気になって字幕を追ってしまう。それが最高の練習です。" },
+      { emo:"💜", name:"推し活",
+        theme:"好きな人の「素顔」に、英語で近づこう。（[　]に推しの名前を入れて）",
+        kw:[["[名前] interview","インタビュー ── ここから始めて…"],["[名前] funny interview","「面白い場面」に絞ると、楽しい"],["[名前] interview with english subtitles","「英語字幕つき」まで絞れる"]],
+        yami:"好きな人の言葉を「自分で聞き取れた！」瞬間が、何よりの原動力。推しは、最強の先生です。" },
+      { emo:"🎮", name:"ゲーム",
+        theme:"やってみたい！攻略を見たい！ゲームを探そう。",
+        kw:[["game walkthrough","ゲーム攻略 ── ここから始めて…"],["cozy game walkthrough","「のんびり系」に絞ると、好みに"],["cozy farming game gameplay","「農業ゲームの」プレイ動画まで"]],
+        yami:"好きなゲームの実況を英語で見ると、夢中で聞いているうちに、英語が耳に残ります。" },
+      { emo:"🏛", name:"歴史",
+        theme:"「へえ！」と驚ける、世界の歴史の話を探そう。",
+        kw:[["history facts","歴史の豆知識 ── ここから始めて…"],["ancient history facts","「古代の」に絞ると、壮大に"],["ancient egypt history for beginners","「古代エジプトの入門」まで"]],
+        yami:"「面白い！」と思える時代やテーマが見つかると、もっと知りたくて、英語を追ってしまいます。" }
+    ]},
+    { ico:"🚶", title:"外に出かける", items:[
+      { emo:"✈️", name:"旅行",
+        theme:"いつか行きたい！場所を、英語で旅しよう。",
+        kw:[["travel vlog","旅の動画 ── ここから始めて…"],["solo travel vlog","「一人旅」に絞ると、見やすく"],["solo travel vlog in italy","「イタリアの」まで絞れる"]],
+        yami:"「ここ行きたい！」が見つかると、現地の情報も英語で知りたくなる。憧れが、英語を引っ張ります。" },
+      { emo:"🚶", name:"散歩・おでかけ",
+        theme:"歩いてみたい！と思える街の風景を探そう。",
+        kw:[["walking tour","散歩動画 ── ここから始めて…"],["relaxing walking tour","「のんびり系」に絞ると、癒される"],["relaxing walking tour in paris","「パリの」まで絞れる"]],
+        yami:"海外の街を歩く動画は、見ているだけで小旅行。生活音や看板から、生きた英語が拾えます。" },
+      { emo:"☕️", name:"カフェ・グルメ",
+        theme:"行ってみたい！食べてみたい！お店を探そう。",
+        kw:[["cafe vlog","カフェ動画 ── ここから始めて…"],["aesthetic cafe vlog","「おしゃれな」に絞ると、好みに"],["aesthetic cafe vlog in korea","「韓国の」まで絞れる"]],
+        yami:"素敵なカフェ動画に出会うと、その国の文化や言葉まで、気になり始めます。" },
+      { emo:"📷", name:"カメラ",
+        theme:"撮ってみたい！と思える写真や撮り方を探そう。",
+        kw:[["photography tips","撮影のコツ ── ここから始めて…"],["phone photography tips","「スマホでの」に絞ると、身近に"],["phone photography tips for beginners","「初心者向け」まで絞れる"]],
+        yami:"「こう撮ればいいんだ！」が分かると、すぐ試したくなる。学びと行動が、直結します。" },
+      { emo:"🧘", name:"スポーツ・ヨガ",
+        theme:"今日やってみたい！運動やヨガを探そう。",
+        kw:[["yoga at home","おうちヨガ ── ここから始めて…"],["morning yoga at home","「朝の」に絞ると、習慣に"],["morning yoga for beginners 10 minutes","「初心者向け10分」まで"]],
+        yami:"お気に入りのインストラクターを見つけると、毎日その人の英語の指示で、体を動かすことに。" }
+    ]},
+    { ico:"🌿", title:"自然と子どもと", items:[
+      { emo:"🌲", name:"自然",
+        theme:"「きれい！」と感動できる自然の風景を探そう。",
+        kw:[["nature video","自然の動画 ── ここから始めて…"],["relaxing nature video","「癒し系」に絞ると、心地よく"],["relaxing forest rain sounds","「森の雨の音」まで絞れる"]],
+        yami:"美しい風景と英語のナレーションは、勉強感ゼロ。流すだけで、英語が生活に溶け込みます。" },
+      { emo:"🐾", name:"動物",
+        theme:"「かわいい！」が止まらない動物を探そう。",
+        kw:[["cute animals","かわいい動物 ── ここから始めて…"],["cute baby animals","「赤ちゃん」に絞ると、もっと癒される"],["cute baby panda videos","「赤ちゃんパンダの動画」まで"]],
+        yami:"好きな動物を英語で追いかけると、子どもと一緒に「これ英語でなんて言うの？」が始まります。" },
+      { emo:"🌸", name:"植物",
+        theme:"育ててみたい！飾ってみたい！植物を探そう。",
+        kw:[["house plants","観葉植物 ── ここから始めて…"],["easy house plants","「育てやすい」に絞ると、安心"],["easy house plants for beginners","「初心者向け」まで絞れる"]],
+        yami:"育てたい植物が決まると、世話の仕方も英語で調べたくなる。日々の世話が、英語とつながります。" },
+      { emo:"🧸", name:"子どもとの遊び",
+        theme:"おうちで一緒にできる遊びを探そう。",
+        kw:[["kids activities","子どもの遊び ── ここから始めて…"],["indoor kids activities","「室内での」に絞ると、雨の日に"],["easy indoor activities for toddlers","「幼児向けの簡単な」まで"]],
+        yami:"英語で遊びを探すと、そのまま子どもと英語で遊べる。親子のバイリンガル時間が、自然に生まれます。" },
+      { emo:"📖", name:"読書・絵本",
+        theme:"子どもと読みたい！英語の絵本を探そう。",
+        kw:[["read aloud","読み聞かせ動画 ── ここから始めて…"],["read aloud kids book","「子どもの本」に絞ると、親子向けに"],["bedtime story read aloud for kids","「寝る前のお話」まで絞れる"]],
+        yami:"プロの読み聞かせ動画は、発音もお手本に。子どもと一緒に、毎晩1冊の英語習慣が作れます。" }
+    ]}
+  ];
+
+  const listEl = document.getElementById('list');
+  groups.forEach(g=>{
+    const sec = document.createElement('div');
+    sec.className='group';
+    let html = `<div class="group-head"><span class="ico">${g.ico}</span><h2>${g.title}</h2></div><div class="group-line"></div>`;
+    g.items.forEach(it=>{
+      let kwHtml='';
+      it.kw.forEach((k,idx)=>{
+        kwHtml += `<div class="kw step${idx+1}">${idx>0?'<span class="kw-arrow">＋</span>':''}<span class="en">${k[0]}</span><span class="ja">${k[1]}</span></div>`;
+      });
+      html += `
+      <div class="item">
+        <button class="item-btn" onclick="toggle(this)">
+          <span class="emo">${it.emo}</span>
+          <span class="nm">${it.name}</span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="panel"><div class="panel-in">
+          <div class="theme"><b>探索のテーマ：</b>${it.theme}</div>
+          <div class="kw-label">英語で検索してみる ── 言葉を足すほど、世界が変わります</div>
+          ${kwHtml}
+          <div class="yamitsuki"><b>やみつきポイント：</b>${it.yami}</div>
+        </div></div>
+      </div>`;
+    });
+    sec.innerHTML = html;
+    listEl.appendChild(sec);
+  });
+
+  function toggle(btn){
+    btn.parentElement.classList.toggle('open');
+  }
+</script>
+</body>
+</html>

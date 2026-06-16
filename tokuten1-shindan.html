@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英語が伸びる人・伸びない人 タイプ別診断</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F7F4EC;
+    --cream-deep:#EFEADD;
+    --navy:#23314D;
+    --navy-soft:#3A4A6B;
+    --gold:#C79A4B;
+    --gold-deep:#A87F35;
+    --gold-pale:#F0E4C8;
+    --ink:#2B2B2B;
+    --muted:#6E6A60;
+    --line:rgba(35,49,77,.14);
+    --white:#FFFEFB;
+    --radius:18px;
+    --shadow:0 8px 30px rgba(35,49,77,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Zen Kaku Gothic New",sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+    padding:0 18px 80px;
+  }
+  .wrap{max-width:640px;margin:0 auto}
+
+  /* ---------- intro ---------- */
+  .hero{padding:54px 0 28px;text-align:center}
+  .eyebrow{
+    font-family:"Zen Maru Gothic",sans-serif;
+    color:var(--gold-deep);font-weight:500;font-size:.82rem;
+    letter-spacing:.22em;margin-bottom:18px;
+  }
+  .hero h1{
+    font-family:"Zen Maru Gothic",sans-serif;
+    color:var(--navy);font-weight:700;
+    font-size:1.72rem;line-height:1.5;letter-spacing:.01em;
+  }
+  .hero h1 .accent{color:var(--gold-deep)}
+  .hero .lead{
+    margin-top:22px;color:var(--navy-soft);font-size:1.02rem;
+    text-align:left;
+  }
+  .animals-row{
+    display:flex;justify-content:center;gap:6px;
+    font-size:2rem;margin:30px 0 6px;flex-wrap:wrap;
+  }
+  .animals-row span{
+    width:54px;height:54px;display:flex;align-items:center;justify-content:center;
+    background:var(--white);border:1px solid var(--line);border-radius:50%;
+    box-shadow:var(--shadow);
+  }
+
+  .note{
+    background:var(--white);border:1px solid var(--line);
+    border-radius:var(--radius);padding:22px 22px;margin-top:30px;
+    box-shadow:var(--shadow);
+  }
+  .note p{font-size:.98rem;color:var(--navy-soft)}
+  .note .big{color:var(--navy);font-weight:700;font-family:"Zen Maru Gothic",sans-serif}
+
+  .start-btn,.cta-btn{
+    display:block;width:100%;border:none;cursor:pointer;
+    font-family:"Zen Maru Gothic",sans-serif;font-weight:700;
+    background:var(--navy);color:var(--cream);
+    font-size:1.08rem;padding:18px;border-radius:999px;
+    margin-top:30px;letter-spacing:.04em;
+    transition:transform .15s ease, background .2s ease;
+    box-shadow:0 10px 24px rgba(35,49,77,.22);
+  }
+  .start-btn:hover,.cta-btn:hover{background:var(--navy-soft);transform:translateY(-2px)}
+  .start-btn:active,.cta-btn:active{transform:translateY(0)}
+
+  /* ---------- quiz ---------- */
+  #quiz{display:none;padding-top:34px}
+  .progress-head{
+    display:flex;justify-content:space-between;align-items:baseline;
+    margin-bottom:10px;
+  }
+  .progress-head .label{
+    font-family:"Zen Maru Gothic",sans-serif;color:var(--gold-deep);
+    font-weight:500;font-size:.8rem;letter-spacing:.16em;
+  }
+  .progress-head .count{font-size:.86rem;color:var(--muted)}
+  .bar{height:8px;background:var(--cream-deep);border-radius:999px;overflow:hidden}
+  .bar>i{display:block;height:100%;width:0;background:var(--gold);
+    border-radius:999px;transition:width .35s ease}
+
+  .q-card{
+    background:var(--white);border:1px solid var(--line);
+    border-radius:var(--radius);padding:34px 26px;margin-top:26px;
+    box-shadow:var(--shadow);text-align:center;
+  }
+  .q-num{
+    font-family:"Zen Maru Gothic",sans-serif;color:var(--gold-deep);
+    font-weight:700;font-size:.9rem;letter-spacing:.1em;margin-bottom:14px;
+  }
+  .q-text{
+    font-family:"Zen Maru Gothic",sans-serif;color:var(--navy);
+    font-weight:500;font-size:1.22rem;line-height:1.65;min-height:2.6em;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .choices{display:flex;gap:14px;margin-top:30px}
+  .choice{
+    flex:1;cursor:pointer;border:1.5px solid var(--line);
+    background:var(--cream);border-radius:14px;padding:18px 8px;
+    font-family:"Zen Maru Gothic",sans-serif;font-weight:700;font-size:1.02rem;
+    color:var(--navy);transition:all .15s ease;
+  }
+  .choice.yes:hover{background:var(--gold-pale);border-color:var(--gold)}
+  .choice.no:hover{background:var(--cream-deep);border-color:var(--navy-soft)}
+  .choice .sub{display:block;font-weight:400;font-size:.76rem;color:var(--muted);margin-top:4px;font-family:"Zen Kaku Gothic New",sans-serif}
+  .back{
+    margin-top:20px;text-align:center;background:none;border:none;
+    color:var(--muted);font-size:.86rem;cursor:pointer;font-family:inherit;
+    text-decoration:underline;text-underline-offset:3px;
+  }
+  .back:hover{color:var(--navy)}
+
+  /* ---------- result ---------- */
+  #result{display:none;padding-top:40px}
+  .r-eyebrow{text-align:center;font-family:"Zen Maru Gothic",sans-serif;
+    color:var(--gold-deep);font-weight:500;font-size:.82rem;letter-spacing:.2em;margin-bottom:8px}
+  .r-card{
+    background:var(--white);border:1px solid var(--line);
+    border-radius:24px;padding:40px 28px;box-shadow:var(--shadow);text-align:center;
+    border-top:5px solid var(--gold);
+  }
+  .r-emoji{font-size:4.4rem;line-height:1;margin-bottom:6px}
+  .r-type{
+    font-family:"Zen Maru Gothic",sans-serif;color:var(--navy);
+    font-weight:700;font-size:1.6rem;margin-bottom:4px;
+  }
+  .r-tag{color:var(--gold-deep);font-weight:500;font-size:.95rem;margin-bottom:24px}
+  .r-question{
+    background:var(--cream);border-radius:14px;padding:18px 20px;
+    color:var(--navy-soft);font-size:.97rem;text-align:left;margin-bottom:22px;
+    border-left:3px solid var(--gold);
+  }
+  .r-question b{color:var(--navy);font-family:"Zen Maru Gothic",sans-serif}
+  .r-desc{color:var(--ink);font-size:1rem;text-align:left;margin-bottom:24px}
+  .r-arrow{
+    background:var(--navy);color:var(--cream);border-radius:14px;
+    padding:22px 22px;text-align:left;
+  }
+  .r-arrow .h{
+    font-family:"Zen Maru Gothic",sans-serif;font-weight:700;
+    color:var(--gold-pale);font-size:.84rem;letter-spacing:.14em;margin-bottom:8px;
+  }
+  .r-arrow p{font-size:1.02rem;line-height:1.8}
+  .r-arrow b{color:#fff}
+
+  .closing{
+    background:var(--cream-deep);border-radius:var(--radius);
+    padding:30px 26px;margin-top:26px;
+  }
+  .closing h3{
+    font-family:"Zen Maru Gothic",sans-serif;color:var(--navy);
+    font-weight:700;font-size:1.16rem;margin-bottom:14px;text-align:center;
+  }
+  .closing p{color:var(--navy-soft);font-size:.98rem;margin-bottom:14px}
+  .closing p:last-child{margin-bottom:0}
+  .closing .em{color:var(--gold-deep);font-weight:700}
+
+  .cta-note{text-align:center;color:var(--muted);font-size:.85rem;margin-top:10px}
+
+  .retry{
+    margin:24px auto 0;display:block;background:none;border:none;
+    color:var(--muted);font-size:.86rem;cursor:pointer;font-family:inherit;
+    text-decoration:underline;text-underline-offset:3px;
+  }
+  .retry:hover{color:var(--navy)}
+
+  .footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:44px;line-height:1.7}
+
+  @media(max-width:430px){
+    .hero h1{font-size:1.46rem}
+    .q-text{font-size:1.1rem}
+    .r-emoji{font-size:3.6rem}
+    .r-type{font-size:1.38rem}
+    .animals-row span{width:48px;height:48px;font-size:1.7rem}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== INTRO ===== -->
+  <section id="intro">
+    <div class="hero">
+      <div class="eyebrow">親子バイリンガル革命</div>
+      <h1>英語が<span class="accent">伸びる人</span>・<br>伸びない人<br>タイプ別診断</h1>
+      <div class="animals-row">
+        <span>🐑</span><span>🐗</span><span>🦋</span><span>🦔</span><span>🐧</span>
+      </div>
+      <p class="lead">
+        英語を勉強している人は、びっくりするほどたくさんいます。<br>
+        でも、伸びる人と伸びない人は、はっきり分かれます。<br>
+        その差は、才能でも、お金でも、時間でもありません。「やり方」です。
+      </p>
+    </div>
+    <div class="note">
+      <p>このあと、<span class="big">25個の質問</span>であなたのタイプを診断します。<br>
+      診断のあと、あなたに合った<span class="big">解決のヒント</span>をお渡しします。だからこそ、当てはまるものに正直に答えてくださいね。所要時間は2〜3分ほどです。</p>
+    </div>
+    <button class="start-btn" onclick="startQuiz()">診断をはじめる</button>
+    <p class="footer">© メイプル英語スクール / 親子バイリンガル革命</p>
+  </section>
+
+  <!-- ===== QUIZ ===== -->
+  <section id="quiz">
+    <div class="progress-head">
+      <span class="label">DIAGNOSIS</span>
+      <span class="count"><span id="cur">1</span> / 25</span>
+    </div>
+    <div class="bar"><i id="barFill"></i></div>
+
+    <div class="q-card">
+      <div class="q-num" id="qNum">Q1</div>
+      <div class="q-text" id="qText"></div>
+      <div class="choices">
+        <button class="choice yes" onclick="answer(true)">はい<span class="sub">当てはまる</span></button>
+        <button class="choice no" onclick="answer(false)">いいえ<span class="sub">当てはまらない</span></button>
+      </div>
+    </div>
+    <button class="back" id="backBtn" onclick="goBack()" style="display:none">← 前の質問にもどる</button>
+  </section>
+
+  <!-- ===== RESULT ===== -->
+  <section id="result">
+    <div class="r-eyebrow">YOUR TYPE — あなたのタイプは</div>
+    <div class="r-card">
+      <div class="r-emoji" id="rEmoji"></div>
+      <div class="r-type" id="rType"></div>
+      <div class="r-tag" id="rTag"></div>
+      <div class="r-question" id="rQuestion"></div>
+      <div class="r-desc" id="rDesc"></div>
+      <div class="r-arrow">
+        <div class="h" id="rArrowHead">→ 進むべき方向</div>
+        <p id="rArrow"></p>
+      </div>
+    </div>
+
+    <div class="closing" id="closingBlock">
+      <h3>タイプは5つに分かれても、<br>つまずきの根っこは「やり方」</h3>
+      <p>セミナーで、正しいやり方の<span class="em">全体像</span>はお伝えしました。あとは、あなたとお子さんに合った“最初の一歩”を、具体的に決めるだけ。</p>
+      <p>でもその一歩は、一人ひとり違います。だからこそ、あなた専用の道筋を、個別にお話しさせてください。</p>
+    </div>
+
+    <a class="cta-btn" id="ctaBtn" href="https://www.bilingual.maple-school.com/p/consultation">自分に合った進め方を相談する</a>
+    <p class="cta-note">無料の個別相談ページにすすみます</p>
+
+    <button class="retry" onclick="restart()">もう一度診断する</button>
+    <p class="footer">© メイプル英語スクール / 親子バイリンガル革命</p>
+  </section>
+
+</div>
+
+<script>
+  // ---- 25 questions (group: A=子羊 B=イノシシ C=ちょうちょ D=ハリネズミ E=ペンギン) ----
+  const questions = [
+    {t:"英語が「いつまでに・どうなりたいか」を、すぐには答えられない", g:"A"},
+    {t:"自分のやり方が正しいか、誰かに確認したことはない", g:"B"},
+    {t:"安い・お得な教材を見ると、つい買ってしまう", g:"C"},
+    {t:"英語が伸びない理由を、言葉で説明できない", g:"D"},
+    {t:"周りの人と同じことをしていると、なんとなく安心する", g:"E"},
+    {t:"英語ができたら何がしたいか、具体的に思い浮かばない", g:"A"},
+    {t:"リサーチや人の意見より、自分の感覚を信じている", g:"B"},
+    {t:"手軽そう・簡単そうなものから手を出してしまう", g:"C"},
+    {t:"不安なことや悩みを、誰かに相談できていない", g:"D"},
+    {t:"みんなと違うやり方をするのは、ちょっと勇気がいる", g:"E"},
+    {t:"やってはいるけど、ゴールに近づいている実感がない", g:"A"},
+    {t:"「たぶんこれで合ってるはず」で進めている", g:"B"},
+    {t:"課金したり登録したりすると、やった気になってしまう", g:"C"},
+    {t:"人に頼るのが苦手で、つい一人で抱え込む", g:"D"},
+    {t:"失敗して恥をかくくらいなら、無難な方を選びたい", g:"E"},
+    {t:"レベルアップの方法・次の一手が分からない", g:"A"},
+    {t:"自分の英語力を、正しく把握できていない（過大or過小）", g:"B"},
+    {t:"これまで買った教材で、最後までやり切ったものは少ない", g:"C"},
+    {t:"うまくいかないと、つい“できるふり”をしてしまう", g:"D"},
+    {t:"“普通はこうだよね”という基準で、つい物事を決めてしまう", g:"E"},
+    {t:"遠い目標も、近い目標も、はっきりしていない", g:"A"},
+    {t:"客観的に自分を見ることの大切さが、ピンとこない", g:"B"},
+    {t:"続け方が分からず、いつのまにかやめてしまう", g:"C"},
+    {t:"今のままでも、なんとかなる気がして、後回しにしがち", g:"D"},
+    {t:"自分だけ突出するより、まわりと足並みをそろえたい", g:"E"}
+  ];
+
+  const results = {
+    A:{emoji:"🐑",type:"迷える子羊タイプ",tag:"目標が見えていない",
+       q:"英語を、いつまでに、どんな状態になるためにやっていますか？　すぐ答えられなかったら要注意。",
+       desc:"地図を持たずに歩いている状態です。どれだけ歩いても、ゴールが決まっていないと、近づいているのかどうか分かりません。",
+       arrow:"まず<b>「ゴール設計」</b>から。どこに向かうのかが決まれば、やることは自然に絞られていきます。"},
+    B:{emoji:"🐗",type:"まっすぐイノシシタイプ",tag:"自己流・直感で突き進む",
+       q:"あなたのやり方が正しいと、誰かに保証してもらったことはありますか？",
+       desc:"努力家なのに、方向がずれていると成果が出ません。プロでもないのに、直感に人生を委ねているのと同じです。",
+       arrow:"自分の<b>「正確な現在地」</b>を知ることから。検定や得点だけでは、本当に使える英語かどうかは測れません。通じるか・口から出るかまで含めて、総合的に見ていきましょう。"},
+    C:{emoji:"🦋",type:"花から花へちょうちょタイプ",tag:"目移りして続かない",
+       q:"これまで使った教材・アプリのうち、最後までやり切ったものはいくつありますか？",
+       desc:"花から花へ。新しいものに目移りして、どれも身につく前に、次へ飛んでいってしまいます。",
+       arrow:"<b>「順序とタイミング」</b>を学ぶこと。正しい順番で積めば、一つひとつが、ちゃんと力になります。"},
+    D:{emoji:"🦔",type:"かくれんぼハリネズミタイプ",tag:"一人で抱えて隠れてしまう",
+       q:"英語が伸びないとき、その理由を言葉で説明できますか？",
+       desc:"不安だと丸まって隠れてしまう。一人で抱え込み、うまくいかないと“できるふり”をして、やり過ごしてしまいます。",
+       arrow:"<b>「環境と伴走」</b>が必要です。安心して頼れる場所があれば、自分と向き合う力が、自然と戻ってきます。"},
+    E:{emoji:"🐧",type:"横並びペンギンタイプ",tag:"周りに合わせて安心したい",
+       q:"もし誰も見ていなかったら、あなたは今と同じ英語のやり方を選びますか？",
+       desc:"出る杭になるのが怖くて、つい周りに合わせてしまう。みんなと同じなら、うまくいかなくても言い訳ができるからです。",
+       arrow:"<b>「自分だけの理由」</b>を持つこと。みんながどうかではなく、あなたが英語をやる理由が決まれば、人の目は気にならなくなります。"},
+    EGG:{emoji:"🥚",type:"もじもじタマゴさん",tag:"ぜんぶに心当たりがある",
+       q:"どれか一つではなく、ぜんぶ当てはまる気がしませんでしたか？　それは、あなたが真剣に悩んでいる証拠です。",
+       desc:"まだ殻の中で、ぐるぐると考えこんでいる状態。迷いも、自己流も、目移りも、不安も、人の目も——ぜんぶ抱えています。でも、それはダメなことではありません。生まれる前は、みんなこの時期を通ります。",
+       arrow:"一人でぜんぶ抱えないこと。今いちばん必要なのは、信頼できる人と一緒に、ひとつずつほどいていくこと。殻を破るタイミングは、もう来ています。"},
+    SWAN:{emoji:"🦢",type:"しなやかハクチョウさん",tag:"すいすい進む、その裏で",
+       q:"ほとんど当てはまらなかったあなた。それは、見えないところで積み重ねてきた証です。",
+       desc:"優雅に水面をすべるハクチョウも、水の下では懸命に足を動かしています。あなたが英語の進め方に迷わないのは、見えないところで積み重ねてきたから。本当にすばらしいことです。",
+       arrow:"その積み方、ぜひこれから多くの親子にも分けてあげてください。<br><br>ただ——もし“正直に答えきれていなかったかも”とか、“分かってはいるけど、実際どう進めるかは自信がない”と少しでも感じたら。もう一度ゆっくり答えるか、その最後の一歩を、個別相談でお話ししましょう。"}
+  };
+
+  let current=0;
+  const answers=new Array(questions.length).fill(null);
+
+  const introEl=document.getElementById('intro');
+  const quizEl=document.getElementById('quiz');
+  const resultEl=document.getElementById('result');
+
+  function startQuiz(){
+    introEl.style.display='none';
+    quizEl.style.display='block';
+    current=0;
+    render();
+    window.scrollTo({top:0});
+  }
+
+  function render(){
+    const q=questions[current];
+    document.getElementById('qNum').textContent='Q'+(current+1);
+    document.getElementById('qText').textContent=q.t;
+    document.getElementById('cur').textContent=current+1;
+    document.getElementById('barFill').style.width=((current)/questions.length*100)+'%';
+    document.getElementById('backBtn').style.display=current>0?'block':'none';
+  }
+
+  function answer(val){
+    answers[current]=val;
+    if(current<questions.length-1){
+      current++;
+      render();
+    }else{
+      showResult();
+    }
+  }
+
+  function goBack(){
+    if(current>0){current--;render();}
+  }
+
+  function showResult(){
+    const tally={A:0,B:0,C:0,D:0,E:0};
+    let yesTotal=0;
+    questions.forEach((q,i)=>{ if(answers[i]){ tally[q.g]++; yesTotal++; } });
+
+    let key;
+    if(yesTotal>=20){
+      key="EGG";            // ほとんど「はい」→ もじもじタマゴさん
+    }else if(yesTotal<=3){
+      key="SWAN";           // ほとんど「いいえ」→ しなやかハクチョウさん
+    }else{
+      // 5タイプの最多。同点はA>B>C>D>Eの順
+      let best="A",bestN=-1;
+      ["A","B","C","D","E"].forEach(k=>{ if(tally[k]>bestN){bestN=tally[k];best=k;} });
+      key=best;
+    }
+
+    const r=results[key];
+    document.getElementById('rEmoji').textContent=r.emoji;
+    document.getElementById('rType').textContent=r.type;
+    document.getElementById('rTag').textContent=r.tag;
+    document.getElementById('rQuestion').innerHTML='<b>'+r.q+'</b>';
+    document.getElementById('rDesc').textContent=r.desc;
+    document.getElementById('rArrow').innerHTML=r.arrow;
+
+    // 見出しと締めブロックの出し分け
+    const head=document.getElementById('rArrowHead');
+    const closing=document.getElementById('closingBlock');
+    if(key==="SWAN"){
+      head.textContent="→ あなたへ";
+      closing.style.display="none";          // 讃える系なので共通の締めは出さない
+    }else if(key==="EGG"){
+      head.textContent="→ 今すべきこと";
+      closing.style.display="block";
+    }else{
+      head.textContent="→ 進むべき方向";
+      closing.style.display="block";
+    }
+
+    document.getElementById('barFill').style.width='100%';
+    quizEl.style.display='none';
+    resultEl.style.display='block';
+    window.scrollTo({top:0});
+  }
+
+  function restart(){
+    answers.fill(null);
+    current=0;
+    resultEl.style.display='none';
+    introEl.style.display='block';
+    window.scrollTo({top:0});
+  }
+</script>
+</body>
+</html>
