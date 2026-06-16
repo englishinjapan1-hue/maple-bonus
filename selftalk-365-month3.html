@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ひとりごと英語365日テンプレート ── Day 1〜5</title>
+<style>
+  :root{
+    --paper:#FDFAF5;--navy:#1A1A2E;--navy-soft:#2c2c4a;
+    --gold:#B8963E;--gold-soft:#d9c084;--line:rgba(26,26,46,.12);
+    --child:#4f8a5b;--child-soft:#e0ede2;
+    --shadow:0 1px 2px rgba(26,26,46,.05),0 8px 30px rgba(26,26,46,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",YuGothic,"Noto Sans JP",sans-serif;
+    background:var(--paper);color:var(--navy);line-height:1.8;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:680px;margin:0 auto;padding:32px 20px 60px}
+
+  .head{text-align:center;margin-bottom:8px}
+  .eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:12px}
+  .head h1{font-size:clamp(22px,5vw,30px);font-weight:800;line-height:1.3;margin-bottom:8px}
+  .head .sub{font-size:13px;color:var(--navy-soft)}
+  .start-note{margin:22px 0 28px;padding:18px 20px;background:rgba(184,150,62,.07);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;font-size:13.5px;color:var(--navy-soft)}
+  .start-note b{color:var(--navy)}
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;margin-bottom:20px;box-shadow:var(--shadow);overflow:hidden}
+  .card-top{display:flex;align-items:stretch;border-bottom:1px solid var(--line)}
+  .day-badge{background:var(--navy);color:var(--paper);padding:18px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:96px;flex-shrink:0}
+  .day-badge .d-label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-soft);font-weight:700}
+  .day-badge .d-num{font-family:Georgia,serif;font-size:34px;font-weight:700;line-height:1}
+  .day-badge .stage{font-size:8.5px;letter-spacing:.08em;color:var(--gold-soft);margin-top:5px;text-align:center;opacity:.85}
+  .head-right{padding:14px 20px;display:flex;flex-direction:column;justify-content:center;gap:5px}
+  .head-right .scene{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .head-right .scene .en{font-family:Georgia,serif;font-style:italic;text-transform:none;letter-spacing:0;color:var(--navy-soft);opacity:.7;margin-left:6px}
+  .head-right .type-tag{font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--navy-soft);opacity:.7}
+
+  .card-body{padding:20px}
+
+  /* メインの型 */
+  .main-line{margin-bottom:6px}
+  .main-line .en{font-family:Georgia,"Times New Roman",serif;font-size:26px;font-weight:600;line-height:1.4}
+  .main-line .en .fill{color:var(--gold);font-style:italic;border-bottom:2px dashed var(--gold-soft);padding-bottom:1px}
+  .main-line .jp{font-size:14px;color:var(--navy-soft);margin-top:2px}
+
+  /* ラベルタグ */
+  .kind{display:inline-flex;align-items:baseline;gap:6px;margin:8px 0 0;background:rgba(184,150,62,.1);border-radius:6px;padding:3px 10px}
+  .kind .k-main{font-size:11.5px;font-weight:700;color:var(--navy)}
+  .kind .k-pos{font-size:10px;color:var(--navy-soft);opacity:.75}
+
+  /* 受け答え */
+  .reply-box{margin-top:16px;padding:13px 16px;background:var(--paper);border:1px solid var(--line);border-radius:10px}
+  .reply-box .rb-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+  .reply-box .rb-line{font-family:Georgia,serif;font-size:16px}
+  .reply-box .rb-line .a{color:var(--gold);font-weight:600}
+  .reply-box .rb-line .sep{color:var(--gold);font-weight:700;margin:0 5px}
+  .reply-box .rb-jp{font-size:12px;color:var(--navy-soft);margin-top:3px;font-family:"Hiragino Kaku Gothic ProN",sans-serif}
+
+  /* 言いかえ */
+  .vars{margin-top:14px}
+  .vars-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--navy-soft);opacity:.7;font-weight:700;margin-bottom:7px}
+  .var{font-family:Georgia,serif;font-size:16px;margin-bottom:5px;color:var(--navy-soft)}
+  .var:last-child{margin-bottom:0}
+  .var .fill{color:var(--gold);font-style:italic}
+  .var .jp{font-family:"Hiragino Kaku Gothic ProN",sans-serif;font-size:12px}
+
+  /* Your turn（ママが今日埋める） */
+  .your-turn{margin-top:16px;padding:13px 16px;background:var(--paper);border:1px dashed var(--line);border-radius:10px}
+  .your-turn .yt-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;display:block}
+  .your-turn .yt-row{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;font-family:Georgia,serif;font-size:18px}
+  .your-turn input{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:15px;border:none;border-bottom:2px solid var(--gold-soft);background:transparent;padding:2px 6px;min-width:130px;flex:1;color:var(--navy);outline:none}
+  .your-turn input:focus{border-bottom-color:var(--gold)}
+  .your-turn .yt-hint{font-size:11.5px;color:var(--navy-soft);margin-top:7px;font-family:"Hiragino Kaku Gothic ProN",sans-serif}
+  .your-turn .yt-hint .w{color:var(--gold);font-style:italic;font-family:Georgia,serif}
+
+  footer{border-top:1px solid var(--line);padding:26px 0 0;text-align:center;margin-top:26px}
+  footer .brand{font-size:13px;font-weight:700}
+  footer .tag{font-size:12px;color:var(--navy-soft);margin-top:5px}
+  .preview-tag{text-align:center;font-size:12px;color:var(--navy-soft);opacity:.8;margin-bottom:20px}
+
+  @media(max-width:520px){
+    .card-top{flex-direction:column}
+    .day-badge{flex-direction:row;gap:12px;min-width:0;padding:12px 20px;justify-content:flex-start}
+    .day-badge .d-num{font-size:26px}
+    .day-badge .stage{margin-top:0}
+    .main-line .en{font-size:22px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="head">
+    <p class="eyebrow">特典 05 ／ Self-Talk in English, 365 Days</p>
+    <h1>ひとりごと英語365日テンプレート</h1>
+    <p class="sub">今日のわたしを、英語にする。</p>
+  </div>
+
+  <div class="start-note">
+    <b>スタートは、ママからです。</b><br>
+    ママは、まずはしっかり口に出すアウトプットをしましょう。子どもには、しっかりインプット。無理なく言える気持ちが育つまで、ママが繰り返し使いましょう。笑顔で、大きな声で。「英語は楽しい！」の演出もお忘れなく！
+  </div>
+
+  <p class="preview-tag">── Month 3 ／ Day 61〜90（1周目：ママが実演）──</p>
+
+  <div id="cards"></div>
+
+  <footer>
+    <p class="brand">親子バイリンガル革命</p>
+    <p class="tag">「好き」がエンジン。今日のひとことから。</p>
+  </footer>
+</div>
+
+<script>
+// 各日: scene, sceneEn, main[pre,fill,post,jp], kindMain, kindPos,
+// reply[英,訳] (任意), vars[[fill,jp],...], yt[pre,post], ytWords
+const DAYS = [
+  {day:61,scene:"動物とふれあう",sceneEn:"Animals & pets",
+   main:["Look, a ","doggy","!","見て、ワンちゃん！"],
+   kindMain:"もの",kindPos:"名詞",
+   reply:["Can I pet it? ── Yes, gently!","触ってもいい？ ──うん、そっとね！"],
+   vars:[["kitty","! ──ねこちゃん！"],["bird","! ──ことり！"],["bunny","! ──うさぎちゃん！"]],
+   yt:["Look, a ","!"],ytWords:"doggy / kitty / bird"},
+
+  {day:62,scene:"動物とふれあう",sceneEn:"Animals & pets",type:"qa",
+   q:["What sound does a dog make?","ワンちゃんはなんて鳴く？"],
+   a:["It says ","woof woof",".","ワンワンだよ。"],
+   kindMain:"もの",kindPos:"名詞",
+   vars:[["meow",". ──ニャーだよ。（ねこ）"],["moo",". ──モーだよ。（うし）"],["quack",". ──ガーガーだよ。（あひる）"]],
+   yt:["It says ","."],ytWords:"woof woof / meow / moo"},
+
+  {day:63,scene:"動物とふれあう",sceneEn:"Animals & pets",
+   main:["Let's ","feed"," the cat.","ねこさんにごはんをあげよう。"],
+   kindMain:"動作（アクションワード）",kindPos:"動詞の原形",
+   reply:["Is she hungry? ── Yes, very!","おなかすいてるかな？ ──うん、ぺこぺこ！"],
+   vars:[["pet"," the cat. ──ねこさんをなでよう。"],["walk"," the dog. ──ワンちゃんをお散歩しよう。"]],
+   yt:["Let's "," the cat."],ytWords:"feed / pet / walk"},
+
+  {day:64,scene:"トラブルと仲直り",sceneEn:"Trouble & making up",
+   main:["Don't ","cry",", I'm here.","泣かないで、そばにいるよ。"],
+   kindMain:"動作（アクションワード）",kindPos:"動詞の原形",
+   reply:["Are you hurt? ── Just a little.","けがした？ ──ちょっとだけ。"],
+   vars:[["worry",", I'm here. ──心配しないで、そばにいるよ。"]],
+   yt:["Don't ",", I'm here."],ytWords:"cry / worry"},
+
+  {day:65,scene:"トラブルと仲直り",sceneEn:"Trouble & making up",type:"qa",
+   q:["What happened?","どうしたの？"],
+   a:["I ","fell down",".","ころんじゃった。"],
+   kindMain:"動作（アクションワード）",kindPos:"動詞の原形",
+   vars:[["dropped it",". ──落としちゃった。"],["lost my toy",". ──おもちゃをなくしちゃった。"]],
+   yt:["I ","."],ytWords:"fell down / dropped it"},
+
+  {day:66,scene:"トラブルと仲直り",sceneEn:"Trouble & making up",
+   main:["Let's ","say sorry",".","ごめんねしようね。"],
+   kindMain:"動作（アクションワード）",kindPos:"動詞の原形",
+   reply:["I'm sorry. ── That's okay.","ごめんね。 ──いいよ。"],
+   vars:[["make up",". ──仲直りしようね。"],["shake hands",". ──握手しようね。"],["hug",". ──ぎゅーしようね。"]],
+   yt:["Let's ","."],ytWords:"say sorry / make up"},
+
+  {day:67,scene:"起きる",sceneEn:"Waking up",
+   main:["Rise and ","shine","!","おはよう、起きる時間だよ！"],
+   kindMain:"動作（アクションワード）",kindPos:"動詞の原形",
+   reply:["Five more minutes? ── Okay, just five!","あと5分？ ──いいよ、5分だけね！"],
+   vars:[["smile","! ──にっこり起きよう！"]],
+   yt:["Rise and ","!"],ytWords:"shine / smile"},
+
+  {day:68,scene:"朝の支度",sceneEn:"Getting ready",
+   main:["Put on your ","shoes",".","くつをはこうね。"],
+   kindMain:"もの",kindPos:"名詞",
+   reply:["Left or right? ── This way!","右と左どっち？ ──こっちだよ！"],
+   vars:[["jacket",". ──上着を着ようね。"],["hat",". ──帽子をかぶろうね。"],["socks",". ──靴下をはこうね。"]],
+   yt:["Put on your ","."],ytWords:"shoes / jacket / hat"},
+
+  {day:69,scene:"朝ごはん",sceneEn:"Breakfast",
+   main:["Let's ","pour"," the milk.","牛乳を注ごうね。"],
+   kindMain:"動作（アクションワード）",kindPos:"動詞の原形",
+   reply:["Can you help? ── Yes, carefully!","手伝ってくれる？ ──うん、そっとね！"],
+   vars:[["spread"," the jam. ──ジャムをぬろうね。"],["cut"," the banana. ──バナナを切ろうね。"]],
+   yt:["Let's "," the milk."],ytWords:"pour / spread / cut"},
+
+  {day:70,scene:"車の中で",sceneEn:"In the car",
+   main:["The light is ","red",".","信号が赤だよ。"],
+   kindMain:"気持ち・状態",kindPos:"形容詞",
+   reply:["Can we go? ── Not yet, it's red!","進める？ ──まだだよ、赤だよ！"],
+   vars:[["green",". ──信号が青だよ。"],["yellow",". ──信号が黄色だよ。"]],
+   yt:["The light is ","."],ytWords:"red / green / yellow"},
+
+  {day:71,scene:"ご飯の時間よ",sceneEn:"Mealtime",
+   main:["Let's set the ","table",".","テーブルの準備をしよう。"],
+   kindMain:"もの",kindPos:"名詞",
+   reply:["Where do the plates go? ── Right here!","お皿はどこ？ ──ここだよ！"],
+   vars:[["napkins",". ──ナプキンを並べよう。"],["chopsticks",". ──おはしを並べよう。"]],
+   yt:["Let's set the ","."],ytWords:"table / napkins"},
+
+  {day:72,scene:"お風呂で",sceneEn:"Bath time",type:"qa",
+   q:["How many toes do you have?","足の指は何本あるかな？"],
+   a:["I have ","ten",".","10本だよ。"],
+   kindMain:"数",kindPos:"数詞",
+   vars:[["five",". ──5本だよ。（片足）"],["two",". ──2本だよ。（手）"]],
+   yt:["I have ","."],ytWords:"ten / five"},
+
+  {day:73,scene:"お手伝い",sceneEn:"Helping",
+   main:["Thank you for ","helping","!","お手伝いありがとう！"],
+   kindMain:"動作（アクションワード）",kindPos:"動詞の原形",
+   reply:["Did I do well? ── Yes, great job!","上手にできた？ ──うん、よくできたね！"],
+   vars:[["sharing","! ──分けてくれてありがとう！"],["waiting","! ──待っててくれてありがとう！"]],
+   yt:["Thank you for ","!"],ytWords:"helping / sharing"},
+
+  {day:74,scene:"公園で",sceneEn:"At the park",
+   main:["Let's go down the ","slide","!","すべり台をすべろう！"],
+   kindMain:"もの",kindPos:"名詞",
+   reply:["My turn? ── Yes, your turn!","ぼくの番？ ──うん、あなたの番！"],
+   vars:[["swing","! ──ブランコにのろう！"],["seesaw","! ──シーソーにのろう！"]],
+   yt:["Let's go on the ","!"],ytWords:"slide / swing / seesaw"},
+
+  {day:75,scene:"スーパーで",sceneEn:"At the supermarket",
+   main:["Let's put it in the ","cart",".","カートに入れようね。"],
+   kindMain:"もの",kindPos:"名詞",
+   reply:["Is that all? ── One more thing!","これで全部？ ──あとひとつ！"],
+   vars:[["basket",". ──かごに入れようね。"],["bag",". ──ふくろに入れようね。"]],
+   yt:["Let's put it in the ","."],ytWords:"cart / basket / bag"},
+
+  {day:76,scene:"お料理で",sceneEn:"Cooking",type:"qa",
+   q:["What are we making?","何を作ってるのかな？"],
+   a:["We're making ","pancakes",".","パンケーキだよ。"],
+   kindMain:"もの",kindPos:"名詞",
+   vars:[["soup",". ──スープだよ。"],["cookies",". ──クッキーだよ。"],["rice balls",". ──おにぎりだよ。"]],
+   yt:["We're making ","."],ytWords:"pancakes / soup / cookies"},
+
+  {day:77,scene:"お掃除で",sceneEn:"Cleaning",
+   main:["Let's ","wipe"," the table.","テーブルを拭こうね。"],
+   kindMain:"動作（アクションワード）",kindPos:"動詞の原形",
+   reply:["Is it clean? ── Yes, sparkling!","きれいになった？ ──うん、ピカピカ！"],
+   vars:[["sweep"," the floor. ──床を掃こうね。"],["fold"," the clothes. ──お洋服をたたもうね。"]],
+   yt:["Let's "," the table."],ytWords:"wipe / sweep / fold"},
+
+  {day:78,scene:"遊ぼう",sceneEn:"Let's play",
+   main:["Let's play ","hide and seek","!","かくれんぼしよう！"],
+   kindMain:"もの",kindPos:"名詞",
+   reply:["Ready or not? ── Here I come!","もういいかい？ ──もういいよ！"],
+   vars:[["tag","! ──おにごっこしよう！"],["catch","! ──キャッチボールしよう！"]],
+   yt:["Let's play ","!"],ytWords:"hide and seek / tag"},
+
+  {day:79,scene:"おもちゃ",sceneEn:"Toys",
+   main:["Let's build a ","tower","!","タワーを作ろう！"],
+   kindMain:"もの",kindPos:"名詞",
+   reply:["Higher? ── Yes, higher!","もっと高く？ ──うん、もっと！"],
+   vars:[["house","! ──おうちを作ろう！"],["bridge","! ──橋を作ろう！"]],
+   yt:["Let's build a ","!"],ytWords:"tower / house / bridge"},
+
+  {day:80,scene:"絵本・読み聞かせ",sceneEn:"Reading books",
+   main:["Once upon a ","time","...","むかしむかし…"],
+   kindMain:"もの",kindPos:"名詞",
+   reply:["And then? ── Let's see!","それから？ ──見てみよう！"],
+   vars:[["The end",". ──おしまい。"]],
+   yt:["Once upon a ","..."],ytWords:"time"},
+
+  {day:81,scene:"お天気・お出かけ準備",sceneEn:"Weather",
+   main:["Look at the ","rainbow","!","虹を見て！"],
+   kindMain:"もの",kindPos:"名詞",
+   reply:["Where? ── Up there!","どこ？ ──あそこだよ！"],
+   vars:[["clouds","! ──雲を見て！"],["stars","! ──星を見て！"],["moon","! ──お月さまを見て！"]],
+   yt:["Look at the ","!"],ytWords:"rainbow / clouds / moon"},
+
+  {day:82,scene:"体調・けが・気持ち",sceneEn:"Feelings",
+   main:["I'm so ","proud"," of you.","あなたを誇りに思うよ。"],
+   kindMain:"気持ち・状態",kindPos:"形容詞",
+   reply:["Really? ── Yes, really!","ほんとう？ ──うん、ほんとうだよ！"],
+   vars:[["happy"," for you. ──あなたのことがうれしいよ。"]],
+   yt:["I'm so "," of you."],ytWords:"proud / happy"},
+
+  {day:83,scene:"家族",sceneEn:"Family",
+   main:["Let's call ","Grandma",".","おばあちゃんに電話しよう。"],
+   kindMain:"もの",kindPos:"名詞",
+   reply:["Can I say hi? ── Of course!","こんにちはしていい？ ──もちろん！"],
+   vars:[["Grandpa",". ──おじいちゃんに電話しよう。"],["Daddy",". ──パパに電話しよう。"]],
+   yt:["Let's call ","."],ytWords:"Grandma / Daddy"},
+
+  {day:84,scene:"お友だち",sceneEn:"Friends",type:"qa",
+   q:["How many friends are here?","お友だちは何人いるかな？"],
+   a:["There are ","four",".","4人だよ。"],
+   kindMain:"数",kindPos:"数詞",
+   vars:[["three",". ──3人だよ。"],["a lot",". ──たくさんだよ。"]],
+   yt:["There are ","."],ytWords:"four / three"},
+
+  {day:85,scene:"園・学校",sceneEn:"At school",
+   main:["Let's draw a ","picture","!","お絵かきしよう！"],
+   kindMain:"もの",kindPos:"名詞",
+   reply:["What should I draw? ── Anything you like!","何描こうかな？ ──好きなものでいいよ！"],
+   vars:[["circle","! ──まるを描こう！"],["flower","! ──お花を描こう！"]],
+   yt:["Let's draw a ","!"],ytWords:"picture / circle / flower"},
+
+  {day:86,scene:"カードゲームで遊ぶ（Go Fish）",sceneEn:"Playing Go Fish",
+   main:["Your ","turn"," to draw.","あなたが引く番だよ。"],
+   kindMain:"もの",kindPos:"名詞",
+   reply:["Did you get one? ── Yes, I did!","とれた？ ──うん、とれた！"],
+   vars:[["turn"," to shuffle. ──あなたがシャッフルする番だよ。"]],
+   yt:["Your "," to draw."],ytWords:"turn"},
+
+  {day:87,scene:"テーブルセッティング",sceneEn:"Setting the table",
+   main:["One for ","you",", one for me.","ひとつはあなた、ひとつはママ。"],
+   kindMain:"もの",kindPos:"名詞",
+   reply:["Who's next? ── Daddy!","次は誰？ ──パパ！"],
+   vars:[["Daddy",", one for me. ──ひとつはパパ、ひとつはママ。"]],
+   yt:["One for ",", one for me."],ytWords:"you / Daddy"},
+
+  {day:88,scene:"ただいま！",sceneEn:"I'm home!",
+   main:["Welcome ","home","!","おかえりなさい！"],
+   kindMain:"場所",kindPos:"名詞（場所）",
+   reply:["I'm back! ── Welcome home!","ただいま！ ──おかえり！"],
+   vars:[["back","! ──おかえり！"]],
+   yt:["Welcome ","!"],ytWords:"home / back"},
+
+  {day:89,scene:"コンビニで",sceneEn:"At the store",type:"qa",
+   q:["How much is this?","これはいくらかな？"],
+   a:["It's ","one hundred yen",".","100円だよ。"],
+   kindMain:"数",kindPos:"数詞",
+   vars:[["two hundred yen",". ──200円だよ。"],["fifty yen",". ──50円だよ。"]],
+   yt:["It's ","."],ytWords:"one hundred yen / fifty yen"},
+
+  {day:90,scene:"寝る前・おやすみ",sceneEn:"Bedtime",
+   main:["Sweet ","dreams","!","いい夢を！"],
+   kindMain:"もの",kindPos:"名詞",
+   reply:["Good night. ── Good night, Mommy!","おやすみ。 ──おやすみ、ママ！"],
+   vars:[["dreams"," tonight! ──今夜もいい夢を！"]],
+   yt:["Sweet ","!"],ytWords:"dreams"},
+];
+
+const cardsEl=document.getElementById('cards');
+DAYS.forEach(d=>{
+  const card=document.createElement('div');card.className='card';
+
+  if(d.type==="qa"){
+    // 自問自答型カード
+    const aEn=`${d.a[0]}<span class="fill">${d.a[1]}</span>${d.a[2]}`;
+    const varsHtml = d.vars.map(v=>`<div class="var">${d.a[0]}<span class="fill">${v[0]}</span><span class="jp">${v[1]}</span></div>`).join('');
+    card.innerHTML=`
+      <div class="card-top">
+        <div class="day-badge">
+          <span class="d-label">Day</span>
+          <span class="d-num">${d.day}</span>
+          <span class="stage">ママが実演</span>
+        </div>
+        <div class="head-right">
+          <span class="scene">${d.scene}<span class="en">${d.sceneEn}</span></span>
+          <span class="type-tag" style="color:var(--child);opacity:1">自問自答タイプ ── Q&amp;A</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="reply-box" style="background:var(--child-soft);border-color:var(--child)">
+          <div class="rb-label" style="color:var(--child)">🎙 ママが一人二役で実演</div>
+          <div class="rb-line"><span style="color:var(--navy);font-weight:600">${d.q[0]}</span></div>
+          <div class="rb-jp">${d.q[1]}</div>
+          <div class="rb-line" style="margin-top:8px"><span class="a">${aEn}</span></div>
+          <div class="rb-jp">${d.a[3]}</div>
+        </div>
+        <span class="kind"><span class="k-main">${d.kindMain}</span><span class="k-pos">（${d.kindPos}）</span></span>
+        <div class="vars">
+          <div class="vars-label">言いかえ例（答えを差し替え）</div>
+          ${varsHtml}
+        </div>
+        <div class="your-turn">
+          <span class="yt-label">Make your own ── 自分で足してみよう</span>
+          <div class="yt-row"><span>${d.yt[0]}</span><input type="text" placeholder="..."><span>${d.yt[1]}</span></div>
+          <div class="yt-hint">💡 例：<span class="w">${d.ytWords}</span></div>
+        </div>
+      </div>`;
+    cardsEl.appendChild(card);
+    return;
+  }
+
+  const mainEn=`${d.main[0]}<span class="fill">${d.main[1]}</span>${d.main[2]}`;
+  const replyHtml = d.reply ? `
+    <div class="reply-box">
+      <div class="rb-label">受け答え（一人二役）</div>
+      <div class="rb-line"><span>${d.reply[0].split(' ── ')[0]}</span><span class="sep">──</span><span class="a">${d.reply[0].split(' ── ')[1]}</span></div>
+      <div class="rb-jp">${d.reply[1]}</div>
+    </div>` : '';
+  const varsHtml = d.vars.map(v=>`<div class="var">${d.main[0]}<span class="fill">${v[0]}</span>${(d.main[2].startsWith('!')||d.main[2].startsWith('.'))?'':''}<span class="jp">${v[1]}</span></div>`).join('');
+  card.innerHTML=`
+    <div class="card-top">
+      <div class="day-badge">
+        <span class="d-label">Day</span>
+        <span class="d-num">${d.day}</span>
+        <span class="stage">ママが実演</span>
+      </div>
+      <div class="head-right">
+        <span class="scene">${d.scene}<span class="en">${d.sceneEn}</span></span>
+        <span class="type-tag">ひとりごとタイプ ── Self-talk</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="main-line">
+        <div class="en">${mainEn}</div>
+        <div class="jp">${d.main[3]}</div>
+      </div>
+      <span class="kind"><span class="k-main">${d.kindMain}</span><span class="k-pos">（${d.kindPos}）</span></span>
+      ${replyHtml}
+      <div class="vars">
+        <div class="vars-label">言いかえ例</div>
+        ${varsHtml}
+      </div>
+      <div class="your-turn">
+        <span class="yt-label">Make your own ── 自分で足してみよう</span>
+        <div class="yt-row"><span>${d.yt[0]}</span><input type="text" placeholder="..."><span>${d.yt[1]}</span></div>
+        <div class="yt-hint">💡 例：<span class="w">${d.ytWords}</span></div>
+      </div>
+    </div>`;
+  cardsEl.appendChild(card);
+});
+</script>
+</body>
+</html>

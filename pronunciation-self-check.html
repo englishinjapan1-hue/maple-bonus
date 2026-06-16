@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>発音セルフチェック10｜親子バイリンガル革命</title>
+<style>
+  :root{
+    --paper:#FDFAF5;
+    --navy:#1A1A2E;
+    --navy-soft:#2c2c4a;
+    --gold:#B8963E;
+    --gold-soft:#d9c084;
+    --line:rgba(26,26,46,.12);
+    --good:#4f8a5b;
+    --mid:#c08a2e;
+    --grow:#a85c4a;
+    --shadow:0 1px 2px rgba(26,26,46,.05),0 8px 30px rgba(26,26,46,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",YuGothic,"Noto Sans JP",sans-serif;
+    background:var(--paper);
+    color:var(--navy);
+    line-height:1.8;
+    letter-spacing:.01em;
+    -webkit-font-smoothing:antialiased;
+  }
+  .en{font-family:Georgia,"Times New Roman",serif;font-style:italic}
+  .wrap{max-width:760px;margin:0 auto;padding:0 22px}
+
+  /* ---------- hero ---------- */
+  header.hero{
+    padding:64px 0 40px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  .eyebrow{
+    font-size:12px;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--gold);font-weight:700;margin-bottom:22px;
+  }
+  .eyebrow .num{
+    font-family:Georgia,serif;font-style:italic;font-size:13px;
+    color:var(--navy);opacity:.5;letter-spacing:0;
+  }
+  h1{
+    font-size:clamp(28px,6.4vw,46px);
+    line-height:1.25;font-weight:800;letter-spacing:.01em;
+    margin-bottom:20px;
+  }
+  h1 .accent{
+    background:linear-gradient(transparent 62%, var(--gold-soft) 62%);
+    padding:0 2px;
+  }
+  .lede{font-size:16px;color:var(--navy-soft);max-width:54ch}
+  .thesis{
+    margin-top:26px;padding:18px 20px;
+    border-left:3px solid var(--gold);
+    background:rgba(184,150,62,.06);
+    font-size:14.5px;color:var(--navy-soft);border-radius:0 8px 8px 0;
+  }
+  .thesis b{color:var(--navy)}
+
+  /* ---------- mic bar ---------- */
+  .mic-panel{
+    margin:30px 0 8px;padding:20px;
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    box-shadow:var(--shadow);
+  }
+  .mic-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .mic-btn{
+    appearance:none;border:none;cursor:pointer;
+    font-family:inherit;font-weight:700;font-size:14px;
+    padding:12px 20px;border-radius:999px;
+    background:var(--navy);color:var(--paper);
+    display:inline-flex;align-items:center;gap:9px;
+    transition:transform .12s ease,background .2s ease;
+  }
+  .mic-btn:hover{background:var(--navy-soft)}
+  .mic-btn:active{transform:scale(.97)}
+  .mic-btn.rec{background:var(--grow)}
+  .mic-btn:disabled{opacity:.4;cursor:not-allowed}
+  .dot{width:9px;height:9px;border-radius:50%;background:currentColor;display:inline-block}
+  .mic-btn.rec .dot{animation:pulse 1s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+  .mic-note{font-size:12.5px;color:var(--navy-soft);opacity:.8}
+  audio{width:100%;margin-top:14px;display:none}
+  audio.show{display:block}
+  .timer{font-family:Georgia,serif;font-size:14px;color:var(--gold);font-weight:700;min-width:42px}
+
+  /* ---------- progress ---------- */
+  .progress-wrap{margin:34px 0 10px}
+  .progress-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+  .progress-head .label{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .progress-head .count{font-family:Georgia,serif;font-size:15px;color:var(--navy-soft)}
+  .bar{height:7px;background:rgba(26,26,46,.08);border-radius:99px;overflow:hidden}
+  .bar > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-soft));transition:width .4s ease;border-radius:99px}
+
+  /* ---------- items ---------- */
+  .items{margin:14px 0 0;list-style:none}
+  .item{
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:22px 22px 20px;margin-bottom:16px;
+    box-shadow:var(--shadow);position:relative;
+    transition:border-color .25s ease;
+  }
+  .item.done{border-color:var(--gold-soft)}
+  .item-head{display:flex;gap:14px;align-items:flex-start}
+  .item-no{
+    font-family:Georgia,serif;font-style:italic;
+    font-size:22px;color:var(--gold);font-weight:700;
+    line-height:1;flex-shrink:0;min-width:30px;
+  }
+  .item-cat{
+    font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+    font-weight:700;color:var(--navy-soft);opacity:.65;margin-bottom:5px;
+  }
+  .item-q{font-size:16.5px;font-weight:700;line-height:1.5}
+  .item-why{font-size:13.5px;color:var(--navy-soft);margin-top:8px}
+  .example{
+    margin-top:14px;padding:14px 16px;
+    background:var(--paper);border:1px dashed var(--line);border-radius:10px;
+  }
+  .example .tag{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;display:block;margin-bottom:6px}
+  .example .phrase{font-family:Georgia,"Times New Roman",serif;font-size:22px;line-height:1.6;color:var(--navy)}
+  .example .phrase .word{white-space:nowrap}
+  .example .phrase b{font-weight:700;color:var(--navy)}
+  .example .phrase .weak{font-weight:400;color:rgba(26,26,46,.5)}
+  .example .phrase .syl-sep{display:inline-block;width:0}
+  .example .phrase .space{display:inline-block;width:.32em}
+  .example .phrase .link-mark{
+    color:var(--gold);font-weight:700;font-style:normal;
+    margin:0 -.04em;font-size:.9em;vertical-align:.04em;
+  }
+  .legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-size:11.5px;color:var(--navy-soft)}
+  .legend span{display:inline-flex;align-items:center;gap:5px}
+  .legend b{font-family:Georgia,serif;color:var(--navy)}
+  .legend .weak{font-family:Georgia,serif;color:rgba(26,26,46,.5)}
+  .legend .link-mark{color:var(--gold);font-weight:700}
+  .example .hint{font-size:12.5px;color:var(--navy-soft);margin-top:10px}
+
+  .scale{margin-top:16px}
+  .scale-label{font-size:12px;color:var(--navy-soft);margin-bottom:9px}
+  .opts{display:flex;gap:8px;flex-wrap:wrap}
+  .opt{
+    flex:1;min-width:90px;
+    appearance:none;border:1px solid var(--line);background:#fff;
+    font-family:inherit;font-size:13px;font-weight:600;color:var(--navy);
+    padding:11px 8px;border-radius:10px;cursor:pointer;text-align:center;
+    transition:all .15s ease;line-height:1.4;
+  }
+  .opt:hover{border-color:var(--gold)}
+  .opt .face{display:block;font-size:18px;margin-bottom:2px}
+  .opt[data-v="2"].on{background:var(--good);border-color:var(--good);color:#fff}
+  .opt[data-v="1"].on{background:var(--mid);border-color:var(--mid);color:#fff}
+  .opt[data-v="0"].on{background:var(--grow);border-color:var(--grow);color:#fff}
+
+  /* ---------- result ---------- */
+  .result{
+    margin:30px 0 60px;padding:0;
+    border-radius:16px;overflow:hidden;
+    border:1px solid var(--line);box-shadow:var(--shadow);
+    display:none;
+  }
+  .result.show{display:block;animation:rise .5s ease}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .result-top{background:var(--navy);color:var(--paper);padding:34px 28px 30px;text-align:center}
+  .result-top .label{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-soft);font-weight:700}
+  .score{font-family:Georgia,serif;font-size:58px;font-weight:700;line-height:1;margin:10px 0 4px}
+  .score small{font-size:22px;opacity:.55}
+  .result-type{font-size:19px;font-weight:800;margin-top:14px;color:#fff}
+  .result-type .en{display:block;font-size:13px;color:var(--gold-soft);font-weight:400;margin-top:3px}
+  .result-body{padding:26px 28px 30px;background:#fff}
+  .result-body p{font-size:14.5px;color:var(--navy-soft);margin-bottom:14px}
+  .result-body .focus-title{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:18px 0 10px}
+  .focus-list{list-style:none}
+  .focus-list li{
+    font-size:14px;padding:11px 0 11px 28px;position:relative;
+    border-bottom:1px solid var(--line);
+  }
+  .focus-list li:last-child{border-bottom:none}
+  .focus-list li::before{
+    content:"";position:absolute;left:6px;top:18px;
+    width:7px;height:7px;border-radius:50%;background:var(--gold);
+  }
+  .result-actions{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+  .btn{
+    appearance:none;border:none;cursor:pointer;font-family:inherit;
+    font-weight:700;font-size:13.5px;padding:12px 22px;border-radius:999px;
+    transition:transform .12s ease;
+  }
+  .btn:active{transform:scale(.97)}
+  .btn-primary{background:var(--gold);color:#fff}
+  .btn-ghost{background:transparent;color:var(--navy);border:1px solid var(--line)}
+
+  footer{border-top:1px solid var(--line);padding:30px 0 50px;text-align:center}
+  footer .brand{font-size:13px;font-weight:700;letter-spacing:.04em}
+  footer .tag{font-size:12px;color:var(--navy-soft);margin-top:6px}
+
+  @media(max-width:560px){
+    header.hero{padding:46px 0 32px}
+    .opt{min-width:0;font-size:12px}
+    .opt .face{font-size:16px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">特典 <span class="num">04</span> &nbsp;/&nbsp; Pronunciation Self-Check</p>
+    <h1>ママの英語、<br><span class="accent">「通じる音」</span>になってる？</h1>
+    <p class="lede">発音セルフチェック10項目。狙うのは、個々の音の完璧さではありません。英語が英語らしく聞こえる<b>リズム・抑揚（プロソディ）</b>と、<b>音のつながり（リンキング）</b>です。</p>
+    <div class="thesis">
+      子どもは、ママの音をまるごと真似します。だからチェックするのは「th が言えるか」ではなく、<b>英語の流れに乗れているか</b>。録音して、自分の耳で聞き返す——それがいちばん正直な先生です。
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="mic-panel">
+    <div class="mic-row">
+      <button class="mic-btn" id="recBtn"><span class="dot"></span><span id="recLabel">録音する</span></button>
+      <span class="timer" id="timer">0:00</span>
+      <span class="mic-note" id="micNote">各項目の例文を声に出して録音 → 聞き返して採点します。</span>
+    </div>
+    <audio id="player" controls></audio>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-head">
+      <span class="label">Progress</span>
+      <span class="count"><span id="doneCount">0</span> / 10</span>
+    </div>
+    <div class="bar"><i id="barFill"></i></div>
+  </div>
+
+  <ol class="items" id="items"></ol>
+
+  <section class="result" id="result">
+    <div class="result-top">
+      <p class="label">Your Result</p>
+      <div class="score"><span id="scoreNum">0</span><small>/20</small></div>
+      <div class="result-type" id="typeName"></div>
+    </div>
+    <div class="result-body">
+      <p id="typeDesc"></p>
+      <p class="focus-title">今日のフォーカス</p>
+      <ul class="focus-list" id="focusList"></ul>
+      <div class="result-actions">
+        <button class="btn btn-primary" onclick="location.reload()">もう一度チェック</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="brand">親子バイリンガル革命</p>
+    <p class="tag">「好き」がエンジン。まずはママの音から。</p>
+  </div>
+</footer>
+
+<script>
+// 各 phrase は「単語」の配列。単語は syl(音節)配列を持ち、強勢音節は s:true。
+// link:true の単語は、次の単語へ音をつなげる（語間に連結マーク）。
+const ITEMS = [
+  {cat:"リズム｜Stress",q:"強く言う語と、弱く言う語の差をつけられている？",why:"英語は強弱のリズムの言語。全部を均等に読むと、日本語の発音に聞こえます。",
+   phrase:[{syl:[["I",false]]},{syl:[["want",true]]},{syl:[["to",false]]},{syl:[["go",true]]},{syl:[["to",false]]},{syl:[["the",false]]},{syl:[["beach",true]]}],
+   hint:"太字の音節を強く高く。それ以外（to / the）はサッと弱く、波打つように。"},
+  {cat:"抑揚｜Intonation",q:"文の終わりで、声を自然に上げ下げできている？",why:"平坦なままだと感情が乗らず、棒読みに。Yes/No疑問は上げて終わります。",
+   phrase:[{syl:[["Are",false]]},{syl:[["you",false]]},{syl:[["rea",true],["dy",false]]}],
+   hint:"rea- を強く、文末を上げる。質問の気持ちを音にのせて。"},
+  {cat:"リンキング｜子音+母音",q:"単語の最後の子音と、次の母音をつなげている？",why:"英語は単語をブツ切りにしません。音が連結して1つの流れになります。",
+   phrase:[{syl:[["pick",true]],link:true},{syl:[["it",false]],link:true},{syl:[["up",true]]}],
+   hint:"「ピック・イット・アップ」ではなく、つなげて「ピッキィタップ」。"},
+  {cat:"リンキング｜同じ音",q:"同じ・近い音が続くとき、一度で言えている？",why:"重なる音を2回言うと不自然。ひと続きにスッと流します。",
+   phrase:[{syl:[["this",false]],link:true},{syl:[["Sa",true],["tur",false],["day",false]]}],
+   hint:"this の s と Saturday の s をつないで「ディサタデイ」。"},
+  {cat:"弱形｜Reduction",q:"and を、弱く短く言えている？",why:"機能語を強く言うと英語のリズムが崩れます。ここは“飲み込む”のがコツ。",
+   phrase:[{syl:[["fish",true]]},{syl:[["and",false]]},{syl:[["chips",true]]}],
+   hint:"and は「アンド」ではなく「ン」に近い弱さ。fish と chips を立てる。"},
+  {cat:"リズム｜ビートの間隔",q:"強い音と強い音の“間隔”を、一定に刻めている？",why:"英語は強い音の間隔で時間が決まります。語数ではなくビートで刻みます。",
+   phrase:[{syl:[["cats",true]],link:true},{syl:[["eat",false]]},{syl:[["fish",true]]}],
+   hint:"cats‿eat をつなげて。cats → fish の間を一定のビートで、eat は軽く。"},
+  {cat:"リンキング｜消える音",q:"続く子音の片方を、自然に落とせている？",why:"t/d などは次の子音の前で省略されがち。残すとカタカナっぽくなります。",
+   phrase:[{syl:[["next",true]],link:true},{syl:[["day",false]]}],
+   hint:"next の t は軽く飲み込んで「ネクスデイ」に近づける。"},
+  {cat:"抑揚｜気持ちを乗せる",q:"いちばん伝えたい語を、はっきり立てて言えている？",why:"内容語をしっかり立てると、気持ちが音にのります。",
+   phrase:[{syl:[["I",false]]},{syl:[["love",true]],link:true},{syl:[["you",false]]}],
+   hint:"love‿you をなめらかにつなげて「ラヴュー」。動詞 love を立てると気持ちが伝わります。"},
+  {cat:"リズム｜止めない",q:"途中で詰まらず、ひと息で言い切れている？",why:"単語ごとに区切ると流れが切れます。意味のかたまりで一気に。",
+   phrase:[{syl:[["once",true]],link:true},{syl:[["u",false],["pon",true]],link:true},{syl:[["a",false]]},{syl:[["time",true]]}],
+   hint:"once / u-PON / time を立て、a は軽く。1つのフレーズとして流す。"},
+  {cat:"総合｜まるごと真似",q:"お手本の“音の流れ”ごと、真似できている？",why:"単語ではなく、メロディーごとコピーする。これが子どもの学び方そのものです。",
+   phrase:[{syl:[["Let's",false]]},{syl:[["do",true]],link:true},{syl:[["it",false]],link:true},{syl:[["to",false],["ge",true],["ther",false]]}],
+   hint:"do‿it‿together をひと続きに。do と -GE- を立て、抑揚ごと“歌マネ”で重ねる。"},
+];
+
+const TYPES = [
+  {min:16,name:"流れができている人",en:"The Flowing Speaker",
+   desc:"英語のリズムと音のつながりが、すでに体に入っています。あとは録音で“さらに気持ちよく流れる”ポイントを微調整するだけ。お子さんはあなたの音をどんどん吸収します。自信を持って、たくさん声を出してください。",
+   focus:["1日1フレーズ、お手本に“重ねて”発声する習慣を","子どもの前では、抑揚を少し大げさにして聞かせる","録音は週1回でOK。流れの心地よさをキープ"]},
+  {min:10,name:"つながりはじめの人",en:"The Connecting Speaker",
+   desc:"リズムの土台はできています。あと一歩は「リンキング（音のつながり）」。単語をブツ切りにせず、最後の子音を次へ流す意識を持つだけで、ぐっと英語らしくなります。点数の低かった項目を、まず3つだけ繰り返しましょう。",
+   focus:["子音+母音のリンキング（pick it up）を毎日10回","and / to / of を“弱く短く”飲み込む練習","録音→聞き返しを、項目ごとに必ずワンセット"]},
+  {min:0,name:"これから波に乗る人",en:"The Rising Speaker",
+   desc:"今は一語ずつ丁寧に読めている段階。ここからは“正しさ”より“流れ”へ。完璧な音は要りません。強い語を波の山にして、英語をメロディーとして真似ることから始めましょう。録音を聞き返すたびに、必ず良くなります。",
+   focus:["まず強弱だけ。大文字の語を高く、あとは軽く","お手本を“歌”だと思って、抑揚ごとコピー","1項目ずつでOK。完璧主義は手放して、回数を稼ぐ"]},
+];
+
+const scores = {};
+const itemsEl = document.getElementById('items');
+
+ITEMS.forEach((it,i)=>{
+  const li = document.createElement('li');
+  li.className='item';
+  li.id='item'+i;
+  const phraseHtml = it.phrase.map((word,wi)=>{
+    const sylHtml = word.syl.map(([txt,stress])=>
+      stress ? `<b>${txt}</b>` : `<span class="weak">${txt}</span>`
+    ).join('<span class="syl-sep"></span>');
+    const linkMark = word.link ? '<span class="link-mark" title="次の語へつなげる">‿</span>' : '';
+    return `<span class="word">${sylHtml}</span>${linkMark}`;
+  }).join('<span class="space"> </span>');
+  li.innerHTML = `
+    <div class="item-head">
+      <span class="item-no">${String(i+1).padStart(2,'0')}</span>
+      <div>
+        <div class="item-cat">${it.cat}</div>
+        <div class="item-q">${it.q}</div>
+        <div class="item-why">${it.why}</div>
+      </div>
+    </div>
+    <div class="example">
+      <span class="tag">Try it aloud</span>
+      <div class="phrase">${phraseHtml}</div>
+      <div class="legend">
+        <span><b>太字</b>＝強く高く</span>
+        <span><span class="weak">薄字</span>＝弱く速く</span>
+        <span><span class="link-mark">‿</span>＝つなげる</span>
+      </div>
+      <div class="hint">💡 ${it.hint}</div>
+    </div>
+    <div class="scale">
+      <div class="scale-label">録音を聞き返して、正直に採点：</div>
+      <div class="opts" data-i="${i}">
+        <button class="opt" data-v="2"><span class="face">◎</span>流れてる</button>
+        <button class="opt" data-v="1"><span class="face">○</span>もう一歩</button>
+        <button class="opt" data-v="0"><span class="face">△</span>これから</button>
+      </div>
+    </div>`;
+  itemsEl.appendChild(li);
+});
+
+itemsEl.addEventListener('click',e=>{
+  const opt = e.target.closest('.opt');
+  if(!opt) return;
+  const group = opt.parentElement;
+  const i = +group.dataset.i;
+  group.querySelectorAll('.opt').forEach(o=>o.classList.remove('on'));
+  opt.classList.add('on');
+  scores[i] = +opt.dataset.v;
+  document.getElementById('item'+i).classList.add('done');
+  updateProgress();
+});
+
+function updateProgress(){
+  const done = Object.keys(scores).length;
+  document.getElementById('doneCount').textContent = done;
+  document.getElementById('barFill').style.width = (done/10*100)+'%';
+  if(done===10) showResult();
+}
+
+function showResult(){
+  const total = Object.values(scores).reduce((a,b)=>a+b,0);
+  const type = TYPES.find(t=>total>=t.min);
+  document.getElementById('scoreNum').textContent = total;
+  document.getElementById('typeName').innerHTML = type.name + '<span class="en">'+type.en+'</span>';
+  document.getElementById('typeDesc').textContent = type.desc;
+  // focus: pick type focus + 2 lowest-scoring categories
+  const fl = document.getElementById('focusList');
+  fl.innerHTML='';
+  type.focus.forEach(f=>{
+    const li=document.createElement('li');li.textContent=f;fl.appendChild(li);
+  });
+  const weak = Object.entries(scores).filter(([k,v])=>v===0).map(([k])=>ITEMS[k]);
+  weak.slice(0,2).forEach(w=>{
+    const li=document.createElement('li');
+    li.innerHTML=`<b>項目「${w.cat}」</b>を重点的に：${w.hint}`;
+    fl.appendChild(li);
+  });
+  const res = document.getElementById('result');
+  res.classList.add('show');
+  res.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* ---------- recorder ---------- */
+let mediaRecorder, chunks=[], timerInt, seconds=0;
+const recBtn=document.getElementById('recBtn');
+const recLabel=document.getElementById('recLabel');
+const player=document.getElementById('player');
+const timerEl=document.getElementById('timer');
+const micNote=document.getElementById('micNote');
+
+recBtn.addEventListener('click', async ()=>{
+  if(mediaRecorder && mediaRecorder.state==='recording'){
+    mediaRecorder.stop();
+    return;
+  }
+  try{
+    const stream = await navigator.mediaDevices.getUserMedia({audio:true});
+    mediaRecorder = new MediaRecorder(stream);
+    chunks=[];
+    mediaRecorder.ondataavailable=e=>chunks.push(e.data);
+    mediaRecorder.onstop=()=>{
+      const blob=new Blob(chunks,{type:'audio/webm'});
+      player.src=URL.createObjectURL(blob);
+      player.classList.add('show');
+      stream.getTracks().forEach(t=>t.stop());
+      clearInterval(timerInt);
+      recBtn.classList.remove('rec');
+      recLabel.textContent='もう一度録音';
+      micNote.textContent='▶ 再生して、英語の流れになっているか確かめて採点しましょう。';
+    };
+    mediaRecorder.start();
+    recBtn.classList.add('rec');
+    recLabel.textContent='停止';
+    seconds=0;timerEl.textContent='0:00';
+    timerInt=setInterval(()=>{
+      seconds++;
+      timerEl.textContent=Math.floor(seconds/60)+':'+String(seconds%60).padStart(2,'0');
+    },1000);
+  }catch(err){
+    micNote.textContent='⚠ マイクが使えませんでした。ブラウザのマイク許可を確認してください。（録音なしで採点もできます）';
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>場面別 表現マスター｜ひとりごと英語365</title>
+<style>
+  :root{
+    --paper:#FDFAF5;--navy:#1A1A2E;--navy-soft:#2c2c4a;
+    --gold:#B8963E;--gold-soft:#d9c084;--line:rgba(26,26,46,.12);
+    --child:#4f8a5b;--shadow:0 1px 2px rgba(26,26,46,.05),0 6px 22px rgba(26,26,46,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",YuGothic,"Noto Sans JP",sans-serif;
+    background:var(--paper);color:var(--navy);line-height:1.7;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:34px 20px 60px}
+
+  .eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px}
+  h1{font-size:clamp(24px,5vw,34px);font-weight:800;line-height:1.3;margin-bottom:12px}
+  .intro{font-size:14px;color:var(--navy-soft);max-width:60ch;margin-bottom:8px}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;margin:18px 0 28px;font-size:12px}
+  .legend span{display:inline-flex;align-items:center;gap:6px;color:var(--navy-soft)}
+  .chip{width:11px;height:11px;border-radius:3px;display:inline-block}
+  .c-solo{background:var(--navy)}.c-reply{background:var(--gold)}.c-qa{background:var(--child)}
+
+  .scene{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:14px;box-shadow:var(--shadow);overflow:hidden}
+  .scene-head{display:flex;align-items:center;gap:12px;padding:13px 18px;background:var(--navy);color:var(--paper)}
+  .scene-no{font-family:Georgia,serif;font-style:italic;font-size:17px;color:var(--gold-soft);font-weight:700;min-width:26px}
+  .scene-name{font-size:15px;font-weight:700}
+  .scene-en{font-family:Georgia,serif;font-style:italic;font-size:12px;color:var(--gold-soft);margin-left:auto}
+  .scene-body{padding:6px 18px 16px}
+  .row{padding:10px 0;border-bottom:1px solid var(--line)}
+  .row:last-child{border-bottom:none}
+  .row-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:5px;margin-bottom:6px;color:#fff}
+  .t-solo{background:var(--navy)}.t-reply{background:var(--gold)}.t-qa{background:var(--child)}
+  .expr{font-family:Georgia,"Times New Roman",serif;font-size:16px;line-height:1.9}
+  .expr .fill{color:var(--gold);font-style:italic}
+  .expr .jp{font-family:"Hiragino Kaku Gothic ProN",sans-serif;font-size:12.5px;color:var(--navy-soft)}
+  .expr .reply{color:var(--gold);font-weight:600}
+  .expr .qq{color:var(--navy)}
+  .expr .qa-sep{color:var(--child);font-weight:700;margin:0 4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">特典 05 ／ Master List</p>
+  <h1>場面別・表現マスター（30場面）</h1>
+  <p class="intro">365日分の背骨です。各場面に、ママのひとりごと型・軽い受け答え・自問自答型（5W1H）を整理しました。ここから日々のカードを組み立てます。</p>
+  <div class="legend">
+    <span><i class="chip c-solo"></i>ひとりごと型（ママが言う）</span>
+    <span><i class="chip c-reply"></i>受け答え（一人二役）</span>
+    <span><i class="chip c-qa"></i>自問自答型（Q&amp;A・5W1H）</span>
+  </div>
+  <div id="scenes"></div>
+</div>
+
+<script>
+// solo: [英, 訳]  reply: [英, 訳]（ひとりごと＋受け答え）  qa: [問, 答, 訳]
+const SCENES = [
+  {name:"起きる",en:"Waking up",
+   solo:[["Good morning!","おはよう！"],["Time to wake up.","起きる時間だよ。"],["Did you sleep well?","よく眠れた？"]],
+   reply:[["It's morning! ── Let's get up!","朝だよ！ ──さあ起きよう！"]],
+   qa:[["What time is it?","It's seven o'clock.","今何時？ ──7時だよ。"]]},
+  {name:"朝の支度",en:"Getting ready",
+   solo:[["Let's get dressed.","お着替えしよう。"],["Time to brush your teeth.","歯磨きの時間だよ。"]],
+   reply:[["Where are your socks? ── Here they are!","靴下どこかな？ ──ここにあった！"]],
+   qa:[["What should you wear?","Let's wear the blue shirt.","何を着ようか？ ──青いシャツにしよう。"]]},
+  {name:"朝ごはん",en:"Breakfast",
+   solo:[["Breakfast is ready!","朝ごはんできたよ！"],["Eat up!","しっかり食べてね！"]],
+   reply:[["Is it yummy? ── Yes, so yummy!","おいしい？ ──うん、すごくおいしい！"]],
+   qa:[["What do you want?","I want some bread.","何が食べたい？ ──パンが食べたい。"]]},
+  {name:"行ってらっしゃい",en:"See you!",
+   solo:[["Have a great day!","いってらっしゃい！"],["Don't forget your bag.","バッグ忘れないでね。"]],
+   reply:[["Ready to go? ── Yes, let's go!","準備できた？ ──うん、行こう！"]],
+   qa:[["What do you need today?","I need my hat.","今日は何がいる？ ──帽子がいる。"]]},
+  {name:"車の中で",en:"In the car",
+   solo:[["Buckle up!","シートベルトしてね！"],["Look at that big truck!","あの大きいトラック見て！"]],
+   reply:[["Are we there yet? ── Almost!","もう着いた？ ──もうすぐだよ！"]],
+   qa:[["What color is that car?","It's red.","あの車は何色？ ──赤だよ。"]]},
+  {name:"ただいま！",en:"I'm home!",
+   solo:[["I'm home!","ただいま！"],["Wash your hands, please.","手を洗おうね。"]],
+   reply:[["How was your day? ── It was fun!","今日どうだった？ ──楽しかった！"]],
+   qa:[["What did you do today?","I played outside.","今日は何をした？ ──外で遊んだよ。"]]},
+  {name:"ご飯の時間よ",en:"Mealtime",
+   solo:[["It's dinner time!","ご飯の時間だよ！"],["Let's say itadakimasu!","いただきますしよう！"]],
+   reply:[["Is it good? ── It's delicious!","おいしい？ ──すごくおいしい！"]],
+   qa:[["What's for dinner?","It's curry tonight.","夕飯は何？ ──今夜はカレーだよ。"]]},
+  {name:"お風呂で",en:"Bath time",
+   solo:[["Time for a bath.","お風呂の時間だよ。"],["The water feels nice!","お湯が気持ちいいね！"]],
+   reply:[["Ready to wash? ── Okay!","洗う準備できた？ ──オッケー！"]],
+   qa:[["How many ducks are there?","There are three.","アヒルは何匹いる？ ──3匹だよ。"]]},
+  {name:"お手伝い",en:"Helping",
+   solo:[["Can you help me?","お手伝いしてくれる？"],["Good job!","よくできたね！"]],
+   reply:[["Can you carry this? ── Yes, I can!","これ運べる？ ──うん、できるよ！"]],
+   qa:[["What can you do?","I can set the table.","何ができる？ ──テーブルの準備ができるよ。"]]},
+  {name:"スーパーで",en:"At the supermarket",
+   solo:[["Let's go shopping.","お買い物に行こう。"],["We need some milk.","牛乳がいるね。"]],
+   reply:[["Can you find the apples? ── Found them!","りんご見つけられる？ ──見つけた！"]],
+   qa:[["How many do we need?","We need five.","いくつ必要？ ──5つだよ。"]]},
+  {name:"お医者さんで",en:"At the doctor's",
+   solo:[["Don't worry, you're okay.","大丈夫だよ、心配いらないよ。"],["Be brave!","がんばって！"]],
+   reply:[["Does it hurt? ── A little.","痛い？ ──ちょっとだけ。"]],
+   qa:[["Where does it hurt?","My tummy hurts.","どこが痛い？ ──お腹が痛い。"]]},
+  {name:"歯医者さんで",en:"At the dentist's",
+   solo:[["Open wide!","お口を大きく開けて！"],["Almost done!","もうすぐ終わるよ！"]],
+   reply:[["Are you scared? ── A little bit.","こわい？ ──ちょっとだけ。"]],
+   qa:[["How many teeth do you have?","Let's count them!","歯は何本ある？ ──数えてみよう！"]]},
+  {name:"コンビニで",en:"At the convenience store",
+   solo:[["Let's pick one thing.","ひとつだけ選ぼう。"],["Let's pay now.","お会計しようね。"]],
+   reply:[["Which one do you want? ── This one!","どれがいい？ ──これ！"]],
+   qa:[["How much is it?","It's one hundred yen.","いくらかな？ ──100円だよ。"]]},
+  {name:"公園で",en:"At the park",
+   solo:[["Let's play outside!","外で遊ぼう！"],["Be careful!","気をつけてね！"]],
+   reply:[["Want to go on the swing? ── Yes, please!","ブランコ乗りたい？ ──うん、乗りたい！"]],
+   qa:[["What do you want to play?","I want to slide.","何して遊びたい？ ──すべり台がしたい。"]]},
+  {name:"お料理で",en:"Cooking",
+   solo:[["Let's cook together.","一緒にお料理しよう。"],["Let's add a little salt.","お塩を少し足そう。"]],
+   reply:[["Can you stir it? ── Like this?","混ぜてくれる？ ──こんなふうに？"]],
+   qa:[["What are we making?","We're making pancakes.","何を作ってるの？ ──パンケーキだよ。"]]},
+  {name:"お掃除で",en:"Cleaning",
+   solo:[["Let's clean up.","お掃除しよう。"],["Wipe the table, please.","テーブルを拭いてね。"]],
+   reply:[["Can you help? ── Sure!","手伝ってくれる？ ──もちろん！"]],
+   qa:[["What should we clean first?","Let's clean the floor.","まず何を掃除する？ ──床を掃除しよう。"]]},
+  {name:"テーブルセッティング",en:"Setting the table",
+   solo:[["Let's set the table.","テーブルの準備をしよう。"],["Put the spoon here.","スプーンをここに置いてね。"]],
+   reply:[["Where do the forks go? ── Right here!","フォークはどこ？ ──ここだよ！"]],
+   qa:[["How many plates do we need?","We need four.","お皿はいくついる？ ──4枚だよ。"]]},
+  {name:"遊ぼう",en:"Let's play",
+   solo:[["Let's play together!","一緒に遊ぼう！"],["That looks fun!","楽しそう！"]],
+   reply:[["Whose turn is it? ── It's your turn!","誰の番？ ──あなたの番だよ！"]],
+   qa:[["What do you want to play?","Let's play hide and seek.","何して遊ぶ？ ──かくれんぼしよう。"]]},
+  {name:"おもちゃ",en:"Toys",
+   solo:[["Let's play with blocks.","ブロックで遊ぼう。"],["Time to put them away.","お片づけの時間だよ。"]],
+   reply:[["Where does this go? ── In the box!","これどこにしまう？ ──箱の中！"]],
+   qa:[["Which toy is your favorite?","I like the teddy bear.","どのおもちゃが好き？ ──くまさんが好き。"]]},
+  {name:"寝る前・おやすみ",en:"Bedtime",
+   solo:[["Time for bed.","寝る時間だよ。"],["Good night. Sweet dreams.","おやすみ。いい夢を。"]],
+   reply:[["Are you sleepy? ── Yes, very.","眠い？ ──うん、とっても。"]],
+   qa:[["What was the best part of today?","Playing at the park!","今日いちばん楽しかったことは？ ──公園で遊んだこと！"]]},
+  {name:"絵本・読み聞かせ",en:"Reading books",
+   solo:[["Let's read a book.","絵本を読もう。"],["Turn the page.","ページをめくってね。"]],
+   reply:[["Do you like this story? ── Yes, I do!","このお話好き？ ──うん、好き！"]],
+   qa:[["What happens next?","Let's find out!","次はどうなるかな？ ──見てみよう！"]]},
+  {name:"お天気・お出かけ準備",en:"Weather & getting out",
+   solo:[["It might rain today.","今日は雨かもね。"],["Bring your umbrella.","傘を持って行こう。"]],
+   reply:[["Is it sunny? ── Yes, it's sunny!","晴れてる？ ──うん、晴れてるよ！"]],
+   qa:[["What's the weather like?","It's cloudy today.","お天気はどう？ ──今日はくもりだよ。"]]},
+  {name:"体調・けが・気持ち",en:"Health & feelings",
+   solo:[["Are you okay?","大丈夫？"],["You'll be fine.","きっと大丈夫だよ。"]],
+   reply:[["Does it hurt? ── Not anymore.","痛い？ ──もう痛くないよ。"]],
+   qa:[["How do you feel?","I feel happy.","今どんな気持ち？ ──うれしい気持ち。"]]},
+  {name:"片づけ・おしまい",en:"Clean up & all done",
+   solo:[["Time to clean up.","お片づけの時間だよ。"],["All done!","ぜんぶおしまい！"]],
+   reply:[["Can you put it back? ── Done!","元に戻せる？ ──できた！"]],
+   qa:[["What's left to clean?","Just the books.","あと何が残ってる？ ──絵本だけだよ。"]]},
+  {name:"カードゲームで遊ぶ（Go Fish）",en:"Playing Go Fish",
+   solo:[["It's your turn.","あなたの番だよ。"],["Draw a card.","カードを1枚引いてね。"]],
+   reply:[["Do you have a match? ── Yes, I do. Here it is!","ペアある？ ──うん、あるよ。はいどうぞ！"],["Do you have a match? ── No, I don't. Go fish!","ペアある？ ──ううん、ないよ。ゴーフィッシュ！"]],
+   qa:[["Do you have any twos?","Yes, I do. Here you go.","2のカードある？ ──うん、あるよ。はいどうぞ。"]]},
+  {name:"家族",en:"Family",
+   solo:[["Daddy's home!","パパが帰ってきたよ！"],["I love you so much.","大好きだよ。"]],
+   reply:[["Where's the baby? ── There she is!","赤ちゃんどこ？ ──そこにいた！"]],
+   qa:[["Who is this?","It's Grandma!","これは誰かな？ ──おばあちゃんだよ！"]]},
+  {name:"お友だち",en:"Friends",
+   solo:[["Say hi to your friend.","お友だちにこんにちはしようね。"],["Let's share.","一緒に使おうね。"]],
+   reply:[["Can I play too? ── Yes, of course!","入れて？ ──うん、もちろん！"]],
+   qa:[["Who do you want to play with?","I want to play with Mia.","誰と遊びたい？ ──ミアちゃんと遊びたい。"]]},
+  {name:"園・学校",en:"At school",
+   solo:[["Time to line up.","並ぶ時間だよ。"],["Listen to your teacher.","先生のお話を聞こうね。"]],
+   reply:[["Did you have fun today? ── Yes, lots!","今日は楽しかった？ ──うん、とっても！"]],
+   qa:[["What's in your bag?","It's my pencil.","カバンの中は何かな？ ──えんぴつだよ。"]]},
+  {name:"トラブルと仲直り",en:"Trouble & making up",
+   solo:[["Are you okay? It's alright.","大丈夫？ もう平気だよ。"],["Let's say sorry.","ごめんねしようね。"]],
+   reply:[["I'm sorry. ── That's okay.","ごめんね。 ──いいよ。"]],
+   qa:[["What happened?","I fell down.","どうしたの？ ──ころんじゃった。"]]},
+  {name:"動物とふれあう",en:"Animals & pets",
+   solo:[["Look, a doggy!","見て、ワンちゃん！"],["Be gentle with the cat.","ねこさんにやさしくしてね。"]],
+   reply:[["Can I pet it? ── Yes, gently!","触ってもいい？ ──うん、そっとね！"]],
+   qa:[["What sound does a dog make?","Woof woof!","ワンちゃんはなんて鳴く？ ──ワンワン！"]]},
+];
+
+const wrap=document.getElementById('scenes');
+SCENES.forEach((s,i)=>{
+  const div=document.createElement('div');div.className='scene';
+  const soloRows=s.solo.map(e=>`<div class="expr"><span class="qq">${e[0]}</span> <span class="jp">──${e[1]}</span></div>`).join('');
+  const replyRows=s.reply.map(e=>{
+    const t=e[0].replace('── ','<span class="qa-sep">──</span> ').replace(/── /,'');
+    return `<div class="expr"><span class="reply">${e[0].split(' ── ')[0]}</span><span class="qa-sep"> ── </span><span class="reply">${e[0].split(' ── ')[1]||''}</span> <span class="jp">──${e[1]}</span></div>`;
+  }).join('');
+  const qaRows=s.qa.map(e=>`<div class="expr"><span class="qq">${e[0]}</span><span class="qa-sep"> ── </span><span class="reply">${e[1]}</span> <span class="jp">──${e[2]}</span></div>`).join('');
+  div.innerHTML=`
+    <div class="scene-head">
+      <span class="scene-no">${String(i+1).padStart(2,'0')}</span>
+      <span class="scene-name">${s.name}</span>
+      <span class="scene-en">${s.en}</span>
+    </div>
+    <div class="scene-body">
+      <div class="row"><span class="row-tag t-solo">ひとりごと</span>${soloRows}</div>
+      <div class="row"><span class="row-tag t-reply">受け答え</span>${replyRows}</div>
+      <div class="row"><span class="row-tag t-qa">自問自答 Q&amp;A</span>${qaRows}</div>
+    </div>`;
+  wrap.appendChild(div);
+});
+</script>
+</body>
+</html>
